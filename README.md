@@ -1,6 +1,6 @@
 # EVE-minimizer is a resource-saving tool
 
-It is a client-switcher, like EVE-O Preview, but instead of previews, EVE-minimizer's primary purpose is to fully-utilize EVE Online's "throttling" mechanics by putting inactive windows out of focus and minimizing them. Without minimizing windows, even if they're out of focus, they still use resources.
+A keybound client-switcher like EVE-O Preview, but instead of previews, EVE-minimizer's primary purpose is to fully-utilize EVE Online's "throttling" mechanics by putting inactive windows out of focus and minimizing them. Without minimizing windows, even if they're out of focus, they still use resources.
 
 # Demonstration
 

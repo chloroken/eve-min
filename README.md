@@ -26,4 +26,4 @@ EVE-minimizer requires `kdotool`. Get it here: https://github.com/jinliu/kdotool
    - Once I figure out how to use arguments in Plasma's Shortcuts menu, I'll remove this and use args.
    - EVE-minimizer is dynamic. It uses `refreshpids.sh` to form an *ordered* line up based on current characters.
 4) Set up your window manager's shortcuts. For Plasma, use `sh '~/Documents/eve-minimizer/switch1.sh'` etc.
-5) Use your shortcut for `refreshpids.sh` after logging into your characters, then use `switch.sh`.
+5) Use your shortcut for `refreshpids.sh` after logging into your characters, then use `switch*.sh`.

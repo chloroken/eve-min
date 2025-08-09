@@ -5,3 +5,10 @@ Its primary purpose is to fully-utilize EVE Online's "throttling" mechanics by p
 # Dependencies
 
 EVE-minimizer requires `kdotool` which needs to be compiled. Install it here: https://github.com/jinliu/kdotool
+
+# Installation
+
+1) Clone this repo and put `kdotool` in the repo folder.
+2) Update `characters.txt` with the format "EVE - yourname" with a linebreak after.
+3) Copy `switch1.sh` for each client you need a keybind for, changing to `switch2.sh` etc and editing line 8.
+4) Set up your window manager's shortcuts. For Plasma, use `sh '~/Documents/eve-minimizer/switch1.sh'` etc.

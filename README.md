@@ -18,7 +18,7 @@ With minimizing, I see these two messages, and use less than 30% of the GPU:
 
 # Dependencies
 
-EVE-minimizer requires `kdotool` which needs to be compiled. Install it here: https://github.com/jinliu/kdotool
+EVE-minimizer requires `kdotool`. Get it here: https://github.com/jinliu/kdotool
 
 # Installation
 

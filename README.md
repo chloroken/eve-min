@@ -2,13 +2,13 @@
 
 A Linux, Wayland-based client-switcher for EVE Online designed to fully-utilize "throttling" mechanics by minimizing inactive windows. If a window is out of focus but not minimized, it will consume resources. Behold:
 
-Without minimizing, I see this message when switching, and use over 90% of the GPU (5 clients, max graphics):
+Without minimizing (5 clients, max graphics), I see this message when switching and use over 90% of the GPU:
 
 ![](https://i.imgur.com/DNjdWlJ.png)
 
 ![](https://i.imgur.com/WT68EQP.png) 
 
-With minimizing (with one client still up), I see these two messages, and use less than 30% of the GPU:
+With minimizing (5 clients, max graphics), I see these two messages and use less than 30% of the GPU:
 
 ![](https://i.imgur.com/RL25rqR.png)
 

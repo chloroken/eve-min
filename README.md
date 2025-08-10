@@ -1,8 +1,8 @@
-# EVE-minimizer is a resource-saving tool
+# EVE-minimizer - a client-switcher for KDE Wayland
 
-A Linux, KDE-based client-switcher for EVE Online designed to fully-utilize "throttling" mechanics by minimizing inactive windows. If a window is out of focus but not minimized, it will consume resources. Behold:
+A client-switcher for EVE Online designed to fully-utilize "throttling" mechanics by minimizing inactive windows. This is a replacement for EVE-O Preview for those who check the "minimize inactive clients" button and don't use previews.
 
-Without minimizing (5 clients, max graphics), I see this message when switching and use over 90% of the GPU:
+Many players believe that if a window is out of focus, it's throtteld. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients, max graphics), I see this message when switching and use over 90% of the GPU:
 
 ![](https://i.imgur.com/DNjdWlJ.png)
 

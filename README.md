@@ -29,5 +29,5 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 4) Copy `switch1.sh` for each client, renaming to `switch2.sh` etc, and editing line 8 appropriately.
    - Once I figure out how to use arguments in Plasma's Shortcuts menu, I'll remove this and use args.
    - Remember, EVE-minimizer is dynamic. It uses `refreshpids.sh` to form an *ordered* line up.
-5) Set up your window manager's shortcuts. For Plasma, use `sh '~/Documents/eve-minimizer/switch1.sh'` etc.
+5) Set up keybinds. For Plasma, use a custom Shortcut like `sh '~/Documents/eve-minimizer/switch1.sh'` etc.
 6) Use your shortcut for `refreshpids.sh` after logging into your characters, then use `switch*.sh`.

@@ -21,7 +21,7 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 
 # Installation
 
-1) Clone this repo and put `kdotool` in the repo folder.
+1) Clone this repo into `~/Documents/` and put `kdotool` in the repo folder.
 2) Update `characters.txt` with the format "EVE - yourname" with a linebreak after.
 3) Copy `switch1.sh` for each client you need a keybind for, changing to `switch2.sh` etc and editing line 8.
    - Once I figure out how to use arguments in Plasma's Shortcuts menu, I'll remove this and use args.

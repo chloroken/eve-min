@@ -1,6 +1,6 @@
 # EVE-minimizer - a client-switcher for KDE Wayland
 
-A client-switcher for EVE Online designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for EVE-O Preview for those who check the "minimize inactive clients" button and don't use previews.
+A client-switcher for EVE Online designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for EVE-O Preview's keybound client-switch for those who check the "minimize inactive clients" button for the performance bump, but don't use the thumbnail preview function.
 
 # Performance Increase
 

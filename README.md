@@ -4,7 +4,7 @@ A client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully
 
 # Performance Increase
 
-Many players believe that if a window is out of focus, it's throttled. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients, max graphics), I see this message on the in-game FPS window when switching, and use over 90% of the GPU:
+Many players believe that if a window is out of focus or in another virtual desktop/workspace, it's throttled. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients, max graphics), I see this message on the in-game FPS window when switching, and use over 90% of the GPU:
 
 ![](https://i.imgur.com/DNjdWlJ.png)
 

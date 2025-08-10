@@ -1,16 +1,16 @@
 # EVE-minimizer - a client-switcher for KDE Wayland
 
-A client-switcher for EVE Online designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for EVE-O Preview's keybound client-switch for those who check the "minimize inactive clients" button for the performance bump, but don't use the thumbnail preview function.
+A client-switcher for [EVE Online](https://www.eveonline.com/)_ designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for [EVE-O Preview](https://github.com/Proopai/eve-o-preview)'s keybound client-switch for those who check the "minimize inactive clients" button for the performance bump, but don't use the thumbnail preview function.
 
 # Performance Increase
 
-Many players believe that if a window is out of focus, it's throttled. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients, max graphics), I see this message when switching and use over 90% of the GPU:
+Many players believe that if a window is out of focus, it's throttled. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients, max graphics), I see this message on the in-game FPS window when switching, and use over 90% of the GPU:
 
 ![](https://i.imgur.com/DNjdWlJ.png)
 
 ![](https://i.imgur.com/WT68EQP.png) 
 
-With minimizing (5 clients, max graphics), I see these two messages and use less than 30% of the GPU:
+With minimizing (5 clients, max graphics), I see these two messages and use less than 30% of the GPU while playing with an active client:
 
 ![](https://i.imgur.com/RL25rqR.png)
 

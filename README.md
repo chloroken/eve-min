@@ -19,7 +19,7 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 # Dependencies
 
 - EVE-minimizer requires `kdotool`: https://github.com/jinliu/kdotool
-- `kdotool` uses `Kwin` scripting, requiring KDE Plasma.
+- `kdotool` uses Kwin scripting which necessitates using KDE Plasma.
 
 # Installation
 

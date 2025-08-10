@@ -22,9 +22,10 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 # Installation
 
 1) Clone this repo into `~/Documents/` and put `kdotool` in the repo folder.
-2) Update `characters.txt` with the format "EVE - yourname" with a linebreak after.
-3) Copy `switch1.sh` for each client you need a keybind for, changing to `switch2.sh` etc and editing line 8.
+2) Update `characters.txt` with the format "EVE - yourname", one per line, for all desired characters.
+   - This order is important. The shortcuts will always follow this 'order' regardless of who's logged on.
+4) Copy `switch1.sh` for each client you need a keybind for, changing to `switch2.sh` etc and editing line 8.
    - Once I figure out how to use arguments in Plasma's Shortcuts menu, I'll remove this and use args.
-   - EVE-minimizer is dynamic. It uses `refreshpids.sh` to form an *ordered* line up based on current characters.
-4) Set up your window manager's shortcuts. For Plasma, use `sh '~/Documents/eve-minimizer/switch1.sh'` etc.
-5) Use your shortcut for `refreshpids.sh` after logging into your characters, then use `switch*.sh`.
+   - Remember, EVE-minimizer is dynamic. It uses `refreshpids.sh` to form an *ordered* line up of current characters.
+5) Set up your window manager's shortcuts. For Plasma, use `sh '~/Documents/eve-minimizer/switch1.sh'` etc.
+6) Use your shortcut for `refreshpids.sh` after logging into your characters, then use `switch*.sh`.

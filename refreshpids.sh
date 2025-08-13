@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Clean up existing PID files
-pids_file="/tmp/pids.txt"
-rm $pids_file
+# Locate current working directory
+dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
-# Search for logged-in characters
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-cat "$parent_path/characters.txt" | while read -r line || [ -n "$line" ]; do
-	# Store PID of active client
-	~/Documents/eve-minimizer/kdotool search --name "$line" >> $pids_file
+# Clean up existing PID file
+pids="$dir/pids.txt"
+rm "$pids"
+
+# Store PIDs of active characters
+cat "$dir/characters.txt" | while read -r line || [ -n "$line" ]; do
+	$dir/kdotool search --name "$line" >> "$pids"
 done
-

@@ -2,7 +2,7 @@
 
 A client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for [EVE-O Preview](https://github.com/Proopai/eve-o-preview)'s keybound client-switching for those who use "minimize inactive clients" for the performance bump, but don't use the thumbnail preview function.
 
-**NOTE: **This tool is not against EVE's ToS because it strictly switches windows. No actions are entered into the client.
+**NOTE**: This tool is not against EVE's ToS because it strictly switches windows. No actions are entered into the client.
 
 # Performance Increase
 

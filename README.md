@@ -24,6 +24,7 @@ EVE-minimizer is simple. It looks at a list of your currently-logged-in characte
 
 - EVE-minimizer requires `kdotool`: https://github.com/jinliu/kdotool
 - `kdotool` uses Kwin scripting which necessitates using KDE Plasma
+- Install `git` to easily copy the files you'll need
 
 # Installation
 

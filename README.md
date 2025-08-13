@@ -38,10 +38,16 @@ This allows you to use the same hotkeys to dynamically switch between multiple "
 4) Copy the kdotool file: `cp ~/Documents/kdotool/kdotool ~/Documents/eve-minimizer/kdotool`
 5) Set permissions: `chmod a+x ~/Documents/eve-minimizer/kdotool`
 6) Edit `~/Documents/eve-minimizer/characters.txt` with your character names, noting the existing format
-7) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the following to hotkeys:
-  - `bash -c '~/Documents/eve-minimizer/refreshpids.sh'`
-  - `bash -c '~/Documents/eve-minimizer/switch.sh "1"'`
-  - Additional switch.sh binds with `"2"`, `"3"`, `"4"`, etc arguments instead of `"1"`
+7) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys:
+  - These are my binds to use as an example: (note the "1" argument")
+  - F1: `bash -c '~/Documents/eve-minimizer/switch.sh "1"'`
+  - F2: `bash -c '~/Documents/eve-minimizer/switch.sh "2"'`
+  - F3: `bash -c '~/Documents/eve-minimizer/switch.sh "3"'`
+  - F4: `bash -c '~/Documents/eve-minimizer/switch.sh "4"'`
+  - F5: `bash -c '~/Documents/eve-minimizer/switch.sh "5"'`
+  - F6: `bash -c '~/Documents/eve-minimizer/refreshpids.sh'`
+  - Add additional switch.sh binds with `"2"`, `"3"`, `"4"`, etc arguments instead of `"1"`
+
 8) Log into your EVE Online characters
 9) Tap the `refreshpids.sh` keybind to lock in your keybinds
 10) Use the `switch.sh` keybinds to switch clients

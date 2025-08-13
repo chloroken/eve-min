@@ -16,6 +16,10 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 
 ![](https://i.imgur.com/NxriGDH.png)
 
+# How it Works
+
+EVE-minimizer is simple. It looks at a list of your currently-logged-in characters, then tries to switch to them based on which hotkey you entered. If you have 3 hotkeys, pressing the first one will activate the first *logged-in* character in the list. The second keybind will activate the second *logged-in* character in the list, and so on. This allows you to use the same hotkeys to switch between multiple "squads" or "lineups". Furthermore, we can still switch clients even after logging out because the windows are "remembered", which makes changing characters super easy when the login screen would otherwise prevent window name searches.
+
 # Dependencies
 
 - EVE-minimizer requires `kdotool`: https://github.com/jinliu/kdotool
@@ -32,7 +36,7 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 7) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the following to hotkeys:
   - `bash -c '~/Documents/eve-minimizer/refreshpids.sh'`
   - `bash -c '~/Documents/eve-minimizer/switch.sh "1"'`
-  - Additional switch.sh binds with "2", "3", "4", etc arguments instead of "1"
+  - Additional switch.sh binds with `"2"`, `"3"`, `"4"`, etc arguments instead of `"1"`
 8) Log into your EVE Online characters
 9) Tap the `refreshpids.sh` keybind to lock in your keybinds
 10) Use the `switch.sh` keybinds to switch clients

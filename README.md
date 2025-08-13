@@ -23,11 +23,16 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 
 # Installation
 
-1) Clone this repo into `~/Documents/` and put `kdotool` in the repo folder.
-2) Update `characters.txt` with the format "EVE - yourname", one per line, for all desired characters.
-   - This order is important. The shortcuts will always follow this 'order' regardless of who's logged on.
-4) Copy `switch1.sh` for each client, renaming to `switch2.sh` etc, and editing line 8 appropriately.
-   - Once I figure out how to use arguments in Plasma's Shortcuts menu, I'll remove this and use args.
-   - Remember, EVE-minimizer is dynamic. It uses `refreshpids.sh` to form an *ordered* line up.
-5) Set up keybinds. For Plasma, use a custom Shortcut like `sh '~/Documents/eve-minimizer/switch1.sh'` etc.
-6) Use your shortcut for `refreshpids.sh` after logging into your characters, then use `switch*.sh`.
+1) `cd ~/Documents/`
+2) Download eve-minimizer: `git clone https://github.com/chloroken/eve-minimizer`
+3) Download kdotool: `git clone https://github.com/jinliu/kdotool`
+4) Copy the kdotool file: `cp ~/Documents/kdotool/kdotool ~/Documents/eve-minimizer/kdotool`
+5) Set permissions: `chmod a+x ~/Documents/eve-minimizer/kdotool`
+6) Edit `~/Documents/eve-minimizer/characters.txt` with your character names, noting the existing format
+7) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the following to hotkeys:
+  - `bash -c '~/Documents/eve-minimizer/refreshpids.sh'`
+  - `bash -c '~/Documents/eve-minimizer/switch.sh "1"'`
+  - Additional switch.sh binds with "2", "3", "4", etc arguments instead of "1"
+8) Log into your EVE Online characters
+9) Tap the `refreshpids.sh` keybind to lock in your keybinds
+10) Use the `switch.sh` keybinds to switch clients

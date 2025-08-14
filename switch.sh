@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Steam uses an identifier for games, EVE is 8500
+evesteamid="steam_app_8500"
+
 # Locate current working directory
 dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
@@ -12,9 +15,6 @@ if [ "$1" -gt "${#pids[@]}" ]; then
 	exit
 fi
 
-# EVE's steam ID string
-evesteamid="steam_app_8500"
-
 # Activate target to bring it forward
 $dir/kdotool windowactivate "$tar"
 
@@ -23,9 +23,8 @@ for pid in $($dir/kdotool search --classname "$evesteamid")
 do
 	if [ "$pid" != "$tar" ]; then
 		$dir/kdotool windowminimize "$pid"
-		
 	fi
 done
 
-# Activate target again to "ready" mouse
+# Activate again to "ready" mouse
 $dir/kdotool windowactivate "$tar"

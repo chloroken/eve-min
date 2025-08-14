@@ -50,3 +50,9 @@ This allows you to use the same hotkeys to dynamically switch between multiple "
 8) Log into your EVE Online characters
 9) Tap the `refreshpids.sh` keybind to lock in your keybinds
 10) Use the `switch.sh` keybinds to switch clients
+
+# To Do
+
+1) Cycle script
+2) Blacklist (for launcher or other purposes)
+3) Add `kdotool` to `$path`

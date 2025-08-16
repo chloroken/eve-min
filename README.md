@@ -51,14 +51,17 @@ In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts
 ![](https://i.imgur.com/OQn4WRL.png) ![](https://i.imgur.com/PJ1Zw2M.png)
    
 Example shortcut ideas:
-   1) Cycling with automatic refreshing when going backward:
-       - `bash -c '~/Documents/eve-min/switch.sh "f"'` refreshes PIDs, then cycles forward in the list
-       - `bash -c '~/Documents/eve-min/switch.sh "rb"'` refreshes PIDs, then cycles backward in the list
+   1) One-button wonder:
+      - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
    2) Targeted switching with manual refreshing:
-       - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
-       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
-       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...
-       - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
+      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active characters
+      - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
+      - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...
+      - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
+   3) Quick cycler with "main" button that also refreshes:
+      - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
+      - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
+      - `bash -c '~/Documents/eve-min/switch.sh "r1"'` switches to the main (if first in list) & refreshes active clients
 
 Example routine:
    1) Log into your EVE Online characters

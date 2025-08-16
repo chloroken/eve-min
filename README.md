@@ -27,7 +27,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 # Dependencies
 
 - Wayland Display Server Protocol
-- KDE Plasma Desktop Environment
+- Kwin Compositor (comes with KDE Plasma)
 - The `curl`, `git`, and `nano` packages (you already have these)
 
 # Installation

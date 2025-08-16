@@ -3,7 +3,7 @@
 # Set up directory variables
 dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 data="$dir/data"
-clientlist="$data/clientlist.txt"
+clientlist="$data/characters.txt"
 blocklist="$data/blocklist.txt"
 clients="$data/clients.txt"
 blocks="$data/blocks.txt"

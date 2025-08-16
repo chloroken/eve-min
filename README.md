@@ -38,7 +38,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 3) Edit `~/Documents/eve-min/charlist.txt` with your character names, noting the existing format
 4) (Optional) Edit `~/Documents/eve-min/blocklist.txt` with windows you want to block, like the EVE Launcher
 
-# Uninstall
+# Uninstallation
 
 To fully uninstall, remove the entire `eve-min` directory and run the following command:
 

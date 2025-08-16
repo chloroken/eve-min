@@ -24,9 +24,8 @@ EVE-min is multifuctional based on which arguments it's supplied. To switch to a
 
 # Dependencies
 
-- EVE-min requires `kdotool`: https://github.com/jinliu/kdotool
-- `kdotool` uses Kwin scripting which necessitates using KDE Plasma
-- Install `git` to easily copy the files you'll need
+- KDE Plasma (`kdotool` requires Kwin scripting)
+- The `git` package to download the files you need
 
 # Installation
 

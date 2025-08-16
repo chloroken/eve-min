@@ -37,15 +37,22 @@ EVE-min has multifuctionality. To switch to a specific client in a lineup, numbe
 5) Set permissions: `chmod a+x ~/Documents/eve-min/kdotool`
 6) Edit `~/Documents/eve-min/charlist.txt` with your character names, noting the existing format
 7) Edit `~/Documents/eve-min/blocklist.txt` with the windows you want to block, like the EVE Launcher
-8) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys:
+
+# Usage
+
+In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys.
+
+![](https://i.imgur.com/OQn4WRL.png)
    
-   Example shortcut ideas:
-    - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
-    - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client in charlist.txt
-    - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client in charlist.txt
-    - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes PIDs, then cycles forward in the list
-    - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward in the list
-    - `bash -c '~/Documents/eve-min/switch.sh "r3"'` refreshes and switches to the third logged-in client
+Example shortcut ideas:
+   1) Cycling with automatic refreshing:
+       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes PIDs, then cycles forward in the list
+       - `bash -c '~/Documents/eve-min/switch.sh "rb"'` refreshes PIDs, then cycles backward in the list
+   2) Targeted switching with manual refreshing:
+       - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
+       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client in charlist.txt
+       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client...
+       - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
 
 10) Log into your EVE Online characters
 11) Use the shortcut with the "r" flag to lock in your keybinds

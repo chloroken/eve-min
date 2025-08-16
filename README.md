@@ -20,7 +20,9 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 
 # How it Works
 
-EVE-min is multifuctional based on which arguments it's supplied. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active PIDs, the `"r"` argument is used. The refresh argument is combinable with others with the following syntax: `"r1"`, `"r2"`, `"r3"`, or `"rf"` and `"rb"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
+EVE-min is multifuctional based on which arguments it's supplied. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active PIDs, the `"r"` argument is used.
+
+The refresh argument is combinable with others with the following syntax: `"r1"`, `"r2"`, `"r3"`, or `"rf"` and `"rb"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
 
 # Dependencies
 

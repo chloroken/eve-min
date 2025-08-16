@@ -18,7 +18,7 @@ With minimizing (5 clients, max graphics), I use less than 30% of the GPU while 
 
 ![](https://i.imgur.com/NxriGDH.png)
 
-# How it Works
+# How It Works
 
 EVE-min is multifuctional based on which arguments it's supplied. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active PIDs, the `"r"` argument is used.
 
@@ -44,7 +44,7 @@ To fully uninstall, remove the entire `eve-min` directory and run the following 
 
    `sudo rm /usr/bin/kdotool`
 
-# Usage
+# Usage Guide
 
 In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys.
 
@@ -70,4 +70,5 @@ Example shortcut ideas:
 2) ~~Blocklist (for launcher or other purposes)~~
 3) ~~Add `kdotool` to `$path`~~
 4) ~~Create an installation script that pulls `kdotool`~~
-5) Allow for higher-count targeted switching (stops at 9 now)
+5) Thoroughly test the script with volunteers
+6) Allow for higher-count targeted switching (stops at 9 now)

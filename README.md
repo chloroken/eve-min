@@ -24,13 +24,13 @@ EVE-min is multifuctional based on which arguments it's supplied. To switch to a
 
 # Dependencies
 
-- KDE Plasma (`kdotool` requires Kwin scripting)
-- The `git` package to download the files you need
+- KDE Plasma because `kdotool` requires Kwin scripting
+- The `git` package to download the files you need (optional)
 
 # Installation
 
 1) Open a terminal and enter `cd ~/Documents/`
-2) Download eve-min: `git clone https://github.com/chloroken/eve-min`
+2) Download EVE-min: `git clone https://github.com/chloroken/eve-min`
 3) Download kdotool: `git clone https://github.com/jinliu/kdotool`
 4) Copy the kdotool file: `cp ~/Documents/kdotool/kdotool ~/Documents/eve-min/kdotool`
 5) Set permissions: `chmod a+x ~/Documents/eve-min/kdotool`

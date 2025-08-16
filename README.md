@@ -56,8 +56,8 @@ Example shortcut ideas:
        - `bash -c '~/Documents/eve-min/switch.sh "rb"'` refreshes PIDs, then cycles backward in the list
    2) Targeted switching with manual refreshing:
        - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
-       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client in charlist.txt
-       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client...
+       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
+       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...
        - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
 
 Example routine:

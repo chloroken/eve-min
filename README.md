@@ -28,7 +28,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 - Wayland Display Server Protocol
 - KDE Plasma Desktop Environment
-- The `git`, `curl`, and `nano` packages (you already have these)
+- The `curl`, `git`, and `nano` packages (you already have these)
 
 # Installation
 

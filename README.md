@@ -33,7 +33,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 Open a terminal and enter the following commands:
 1) `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-2) `git clone https://github.com/chloroken/eve-min ~/Documents`
+2) `git clone https://github.com/chloroken/eve-min ~/Documents/`
 
 Now open up `~/Documents/eve-min/charlist.txt` and enter your character names. Done.
 

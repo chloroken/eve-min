@@ -51,8 +51,8 @@ In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts
 ![](https://i.imgur.com/OQn4WRL.png) ![](https://i.imgur.com/PJ1Zw2M.png)
    
 Example shortcut ideas:
-   1) Cycling with automatic refreshing:
-       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes PIDs, then cycles forward in the list
+   1) Cycling with automatic refreshing when going backward:
+       - `bash -c '~/Documents/eve-min/switch.sh "f"'` refreshes PIDs, then cycles forward in the list
        - `bash -c '~/Documents/eve-min/switch.sh "rb"'` refreshes PIDs, then cycles backward in the list
    2) Targeted switching with manual refreshing:
        - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters

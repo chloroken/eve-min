@@ -54,7 +54,13 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 	echo "$cycle" > "$dir/cycle.txt"
 else
 	# Targeted switch
-	tar="${pids["$1-1"]}"
+	if [[ ${#pids} == 1 ]]; then
+		tar="${$pids["$1-1"]}"
+	else
+		maths=$(echo "$1"| cut -c 2)
+		echo $maths
+		tar="${pids["$maths-1"]}"
+	fi
 	
 	# Prevent out-of-bounds selection
 	if [[ "$1" -gt "${#pids[@]}" ]]; then

@@ -1,4 +1,4 @@
-# EVE-min - a client-switcher for KDE Wayland
+# EVE-min - a client-switcher for KDE Plasma
 
 A client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for [EVE-O Preview](https://github.com/Proopai/eve-o-preview)'s keybound client-switching for those who use "minimize inactive clients" for the performance bump, but don't use the thumbnail preview function.
 
@@ -26,8 +26,9 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Dependencies
 
-- KDE Plasma Desktop Environment because `kdotool` requires Kwin scripting
-- The `git` and `curl` packages to download files (you already have these)
+- Wayland Display Server Protocol
+- KDE Plasma Desktop Environment
+- The `git` and `curl` packages (you already have these)
 
 # Installation
 

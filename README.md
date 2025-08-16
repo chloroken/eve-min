@@ -63,3 +63,4 @@ Example shortcut ideas:
 1) ~~Cycle script~~
 2) ~~Blocklist (for launcher or other purposes)~~
 3) Add `kdotool` to `$path`
+4) Allow for higher-count targeted switching (stops at 9 now)

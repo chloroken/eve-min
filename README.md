@@ -60,9 +60,10 @@ Example shortcut ideas:
        - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client...
        - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
 
-10) Log into your EVE Online characters
-11) Use any shortcut with the `"r"` flag
-12) Use your new keybinds to switch between clients
+Example routine:
+   1) Log into your EVE Online characters
+   2) Use any shortcut with the `"r"` flag
+   3) Use your new keybinds to switch between clients
 
 # To Do
 

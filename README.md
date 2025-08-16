@@ -31,7 +31,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Installation
 
-1) Open a terminal and run this (single line) command to install `kdotool` (*password required for sudo*):
+1) Open a terminal and install `kdotool` (*password required for sudo*) with this one-line command:
 
    `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
 2) Download EVE-min: `git clone https://github.com/chloroken/eve-min ~/Documents`
@@ -40,9 +40,8 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Uninstallation
 
-To fully uninstall, remove the entire `eve-min` directory and run the following command:
-
-   `sudo rm /usr/local/bin/kdotool`
+1) Remove the entire `eve-min` directory.
+2) In a terminal, run: `sudo rm /usr/local/bin/kdotool`
 
 # Usage Guide
 

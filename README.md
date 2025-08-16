@@ -42,7 +42,7 @@ EVE-min has multifuctionality. To switch to a specific client in a lineup, numbe
 
 In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys.
 
-![](https://i.imgur.com/OQn4WRL.png)
+![](https://i.imgur.com/OQn4WRL.png) ![](https://i.imgur.com/PJ1Zw2M.png)
    
 Example shortcut ideas:
    1) Cycling with automatic refreshing:

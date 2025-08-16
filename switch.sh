@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# Locate current working directory
+# Set up directory variables
 dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-
-# Initialize magic variables
 data="$dir/data"
+clientlist="$data/clientlist.txt"
+blocklist="$data/blocklist.txt"
 clients="$data/clients.txt"
 blocks="$data/blocks.txt"
+# Initialize magic variables
 arglen=${#1}
 evesteamid="steam_app_8500"
 
@@ -14,14 +15,13 @@ evesteamid="steam_app_8500"
 if [[ "$1" == r* ]]; then
 
 	# Clean up existing client files
-	rm "$clients"
-	rm "$blocks"
+	rm "$clients" "$blocks"
 
-	# Store PIDs of active & blocked characters
-	cat "$dir/charlist.txt" | while read -r line || [ -n "$line" ]; do
-		kdotool search --name "$line" >> "$clients"
+	# Store client IDs of active & blocked characters
+	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
+		kdotool search --name "$line" >> "$clients";
 	done
-	cat "$dir/blocklist.txt" | while read -r line || [ -n "$line" ]; do
+	cat "$blocklist" | while read -r line || [ -n "$line" ]; do
 		kdotool search --name "$line" >> "$blocks"
 	done
 
@@ -33,7 +33,7 @@ fi
 
 # Ensure client file exists before continuing
 if [ ! -f "$clients" ]; then
-	echo 'No PIDs! Try running ./switch.sh "r" to refresh PIDs.'
+	echo 'No client list! Try running ./switch.sh "r" to refresh PIDs.'
     exit
 fi
 
@@ -61,14 +61,13 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 # Targeted switch ("1", "2" etc)
 else
 
-	# Standard switch, target is argument (e.g. "1", "2")
+	# Simple switch, target is argument (e.g., "1", "2")
 	if [[ $arglen -le 1 ]]; then
 		target="${clients["$1-1"]}"
 		
-	# Trim to numbers from argument (e.g. drop "r" from r1")
+	# Refreshing switch, target is trimmed (e.g., drop "r" from r1")
 	else
 		trimmed=$(echo "$1" | cut -c -f2-)
-		# Set target to those numbers
 		target="${clients["$trimmed-1"]}"
 	fi
 
@@ -78,13 +77,13 @@ else
 	fi
 fi
 
-# Activate target to bring it forward
+# Activate target client to bring it forward
 kdotool windowactivate "$target"
 
 # Read blocked clients
 mapfile -t blocks < "$data/blocks.txt"
 
-# Look through EVE clients
+# Look through active EVE clients
 for client in $(kdotool search --classname "$evesteamid")
 do
 	# Look through blocklist
@@ -97,5 +96,5 @@ do
 	done
 done
 
-# Activate target again to "ready" mouse
+# Activate target client again to "ready" mouse
 kdotool windowactivate "$target"

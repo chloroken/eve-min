@@ -26,8 +26,8 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Dependencies
 
-- KDE Plasma because `kdotool` requires Kwin scripting
-- The `git` package to download the files you need (optional)
+- KDE Plasma Desktop Environment, because `kdotool` requires Kwin scripting
+- The `git` and `curl` packages to download files (you already have these)
 
 # Installation
 

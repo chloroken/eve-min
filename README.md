@@ -31,12 +31,11 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Installation
 
-1) Open a terminal and install `kdotool` with this one-line command (*password required for sudo*):
+Open a terminal and enter the following commands:
+1) `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
+2) `git clone https://github.com/chloroken/eve-min ~/Documents`
 
-   `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-2) Download EVE-min: `git clone https://github.com/chloroken/eve-min ~/Documents`
-3) Edit `~/Documents/eve-min/charlist.txt` with your character names, noting the existing format
-4) (Optional) Edit `~/Documents/eve-min/blocklist.txt` with windows you want to block, like the EVE Launcher
+Now open up `~/Documents/eve-min/charlist.txt` and enter your character names. Done.
 
 # Uninstallation
 

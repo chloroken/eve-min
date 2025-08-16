@@ -40,7 +40,7 @@ Now open up `~/Documents/eve-min/charlist.txt` and enter your character names. D
 # Uninstallation
 
 1) Remove the entire `eve-min` directory.
-2) In a terminal, run: `sudo rm /usr/local/bin/kdotool`
+2) In a terminal, run `sudo rm /usr/local/bin/kdotool`
 
 # Usage Guide
 

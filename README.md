@@ -31,13 +31,16 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Installation
 
-1) Open a terminal and enter `cd ~/Documents/`
-2) Download EVE-min: `git clone https://github.com/chloroken/eve-min`
-3) Download kdotool: `git clone https://github.com/jinliu/kdotool`
-4) Copy the kdotool file: `cp ~/Documents/kdotool/kdotool ~/Documents/eve-min/kdotool`
-5) Set permissions: `chmod a+x ~/Documents/eve-min/kdotool`
-6) Edit `~/Documents/eve-min/charlist.txt` with your character names, noting the existing format
-7) Edit `~/Documents/eve-min/blocklist.txt` with the windows you want to block, like the EVE Launcher
+1) Open a terminal and run this command to install `kdotool`:
+
+   `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/bin/`
+2) Download EVE-min: `git clone https://github.com/chloroken/eve-min ~/Documents`
+3) Edit `~/Documents/eve-min/charlist.txt` with your character names, noting the existing format
+4) (Optional) Edit `~/Documents/eve-min/blocklist.txt` with windows you want to block, like the EVE Launcher
+
+To fully uninstall, remove the entire `eve-min` directory and run the following command:
+
+   `sudo rm /usr/bin/kdotool`
 
 # Usage
 
@@ -63,6 +66,6 @@ Example shortcut ideas:
 
 1) ~~Cycle script~~
 2) ~~Blocklist (for launcher or other purposes)~~
-3) Add `kdotool` to `$path`
-4) Create an installation script that pulls `kdotool`
+~~3) Add `kdotool` to `$path`~~
+~~4) Create an installation script that pulls `kdotool`~~
 5) Allow for higher-count targeted switching (stops at 9 now)

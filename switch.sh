@@ -5,9 +5,11 @@ dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 pids="$dir/pids.txt"
 blocks="$dir/bpids.txt"
 
+# EVE's steam ID string
+evesteamid="steam_app_8500"
+
 # Refresh PIDs
 if [[ "$1" == r* ]]; then
-
 	# Clean up existing PID files
 	rm "$pids"
 	rm "$blocks"
@@ -37,7 +39,6 @@ fi
 # Target selection
 mapfile -t pids < "$dir/pids.txt"
 if [[ "$1" == *f || "$1" == *b ]]; then
-
 	# Cycle switch
 	cycle=$(cat "$dir/cycle.txt")
 	tar="${pids["$cycle"]}"
@@ -76,9 +77,6 @@ $dir/kdotool windowactivate "$tar"
 
 # Read blocked PIDs
 mapfile -t blocks < "$dir/bpids.txt"
-
-# EVE's steam ID string
-evesteamid="steam_app_8500"
 
 # Look through EVE clients
 for pid in $($dir/kdotool search --classname "$evesteamid")

@@ -20,9 +20,7 @@ With minimizing (5 clients, max graphics), I see these two messages and use less
 
 # How it Works
 
-EVE-min is simple. It looks at a list of your currently-logged-in characters, then tries to switch to them based on which hotkey you entered, minimizing all other clients. If you have 3 hotkeys, pressing the first one will activate the first *logged-in* character in the list. The second keybind will activate the second *logged-in* character in the list, and so on.
-
-This allows you to use the same hotkeys to dynamically switch between multiple "squads" or "lineups" depending on which of your characters are currently online. Furthermore, we can still switch clients even after logging out because the windows are "remembered", which makes changing characters super easy when the login screen would otherwise prevent window name searches.
+EVE-min has multifuctionality. To switch to a specific client in a lineup, numbered arguments like "1" "2" and "3" are used. To cycle through active clients, "f" for forward and "b" for backward are used. To refresh the active PIDs, the "r" argument is used. The refresh argument is combinable with others with the following syntax: "r1", "r2", "r3" and "rf" and "rb" to avoid needing to refresh constantly.
 
 # Dependencies
 

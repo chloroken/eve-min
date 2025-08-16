@@ -63,7 +63,7 @@ Example shortcut ideas:
 Example routine:
    1) Log into your EVE Online characters
    2) Use any shortcut with the `"r"` flag
-   3) Use your new keybinds to switch between clients
+   3) Use your keybinds to switch between clients
 
 # To Do
 

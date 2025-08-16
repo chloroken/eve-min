@@ -37,7 +37,7 @@ Open a terminal and enter the following commands:
 2) `git clone https://github.com/chloroken/eve-min ~/Documents/`
 3) `nano ~/Documents/eve-min/characters.txt`
 
-Now, enter your character names in `charlist.txt` and proceed to the **Usage Guide** section below.
+Now, enter your character names in `characters.txt` and proceed to the **Usage Guide** section below.
 
 # Uninstallation
 

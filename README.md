@@ -53,6 +53,6 @@ This allows you to use the same hotkeys to dynamically switch between multiple "
 
 # To Do
 
-1) Cycle script
-2) Blacklist (for launcher or other purposes)
+1) ~~Cycle script~~
+2) ~~Blocklist (for launcher or other purposes)~~
 3) Add `kdotool` to `$path`

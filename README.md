@@ -40,14 +40,16 @@ This allows you to use the same hotkeys to dynamically switch between multiple "
 6) Edit `~/Documents/eve-min/charlist.txt` with your character names, noting the existing format
 7) Edit `~/Documents/eve-min/blocklist.txt` with the windows you want to block, like the EVE Launcher
 8) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys:
-  - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
-  - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client in charlist.txt
-  - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client in charlist.txt
-  - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward in the list
-  - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward in the list
-9) Log into your EVE Online characters
-10) Use the shortcut with the "r" flag to lock in your keybinds
-11) Use the `switch.sh` keybinds to switch clients with "1", "2", etc, or "f" or "b" to cycle
+   
+   Example shortcuts:
+    - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
+    - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client in charlist.txt
+    - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client in charlist.txt
+    - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward in the list
+    - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward in the list
+10) Log into your EVE Online characters
+11) Use the shortcut with the "r" flag to lock in your keybinds
+12) Use the `switch.sh` keybinds to switch clients with "1", "2", etc, or "f" or "b" to cycle
 
 # To Do
 

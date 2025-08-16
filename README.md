@@ -45,7 +45,8 @@ EVE-min has multifuctionality. To switch to a specific client in a lineup, numbe
     - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client in charlist.txt
     - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes PIDs, then cycles forward in the list
     - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward in the list
-      NOTE: `f1` and similar targeted refresh combinations do not currently function.
+   NOTE: `f1` and similar targeted refresh combinations do not currently function.
+
 10) Log into your EVE Online characters
 11) Use the shortcut with the "r" flag to lock in your keybinds
 12) Use the `switch.sh` keybinds to switch clients with "1", "2", etc, or "f" or "b" to cycle

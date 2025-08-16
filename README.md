@@ -12,7 +12,7 @@ Many players believe that if a window is out of focus or in another virtual desk
 
 ![](https://i.imgur.com/WT68EQP.png) 
 
-With minimizing (5 clients, max graphics), I see these two messages and use less than 30% of the GPU while playing with an active client:
+With minimizing (5 clients, max graphics), I use less than 30% of the GPU while playing with an active client:
 
 ![](https://i.imgur.com/RL25rqR.png)
 

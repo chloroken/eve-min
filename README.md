@@ -39,13 +39,13 @@ EVE-min has multifuctionality. To switch to a specific client in a lineup, numbe
 7) Edit `~/Documents/eve-min/blocklist.txt` with the windows you want to block, like the EVE Launcher
 8) In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys:
    
-   Example shortcuts:
+   Example shortcut ideas:
     - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes the PIDs of active characters
     - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client in charlist.txt
     - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in client in charlist.txt
     - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes PIDs, then cycles forward in the list
     - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward in the list
-   NOTE: `f1` and similar targeted refresh combinations do not currently function.
+    - `bash -c '~/Documents/eve-min/switch.sh "r3"'` refreshes and switches to the third logged-in client
 
 10) Log into your EVE Online characters
 11) Use the shortcut with the "r" flag to lock in your keybinds

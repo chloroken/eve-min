@@ -2,26 +2,24 @@
 
 # Locate current working directory
 dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-pids="$dir/pids.txt"
-blocks="$dir/bpids.txt"
+pids="$dir/data/pids.txt"
+blocks="$dir/data/bpids.txt"
 
 # EVE's steam ID string
 evesteamid="steam_app_8500"
 
-# Refresh PIDs
+# Refresh PIDs ("r")
 if [[ "$1" == r* ]]; then
 	# Clean up existing PID files
 	rm "$pids"
 	rm "$blocks"
 
-	# Store PIDs of active characters
+	# Store PIDs of active & blocked characters
 	cat "$dir/charlist.txt" | while read -r line || [ -n "$line" ]; do
-		$dir/kdotool search --name "$line" >> "$pids"
+		kdotool search --name "$line" >> "$pids"
 	done
-
-	# Store PIDs of blocked characters
 	cat "$dir/blocklist.txt" | while read -r line || [ -n "$line" ]; do
-		$dir/kdotool search --name "$line" >> "$blocks"
+		kdotool search --name "$line" >> "$blocks"
 	done
 
 	# If this was just a refresh call, stop now
@@ -36,11 +34,11 @@ if [ ! -f "$pids" ]; then
     exit
 fi
 
-# Target selection
-mapfile -t pids < "$dir/pids.txt"
+# Cycled switching ("f", "b")
+mapfile -t pids < "$dir/data/pids.txt"
 if [[ "$1" == *f || "$1" == *b ]]; then
-	# Cycle switch
-	cycle=$(cat "$dir/cycle.txt")
+	# Read current cycle
+	cycle=$(cat "$dir/data/cycle.txt")
 	tar="${pids["$cycle"]}"
 	
 	# Increment cycle counter
@@ -54,9 +52,11 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 	fi
 
 	# Save new position in cycle
-	echo "$cycle" > "$dir/cycle.txt"
+	echo "$cycle" > "$dir/data/cycle.txt"
+	
+# Targeted switch ("1", "2" etc)
 else
-	# Targeted switch
+	# Trim argument to find target
 	length="$1"
 	if [[ ${#length} -le 1 ]]; then
 		echo "Easy"
@@ -73,23 +73,23 @@ else
 fi
 
 # Activate target to bring it forward
-$dir/kdotool windowactivate "$tar"
+kdotool windowactivate "$tar"
 
 # Read blocked PIDs
-mapfile -t blocks < "$dir/bpids.txt"
+mapfile -t blocks < "$dir/data/bpids.txt"
 
 # Look through EVE clients
-for pid in $($dir/kdotool search --classname "$evesteamid")
+for pid in $(kdotool search --classname "$evesteamid")
 do
 	# Look through blocklist
 	for block in "${blocks[@]}"
 	do
 		# Minimize clients that aren't blocked or targeted
 		if [[ "$pid" != "$block" && "$pid" != "$tar" ]]; then
-			$dir/kdotool windowminimize "$pid"
+			kdotool windowminimize "$pid"
 		fi
 	done
 done
 
 # Activate target again to "ready" mouse
-$dir/kdotool windowactivate "$tar"
+kdotool windowactivate "$tar"

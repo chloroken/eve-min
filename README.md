@@ -31,7 +31,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Installation
 
-1) Open a terminal and install `kdotool` (*password required for sudo*) with this one-line command:
+1) Open a terminal and install `kdotool` with this one-line command (*password required for sudo*):
 
    `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
 2) Download EVE-min: `git clone https://github.com/chloroken/eve-min ~/Documents`

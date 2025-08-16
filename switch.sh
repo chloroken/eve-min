@@ -22,20 +22,22 @@ if [[ "$1" == r* ]]; then
 		$dir/kdotool search --name "$line" >> "$blocks"
 	done
 
+	# If this was just a refresh call, stop now
 	if [[ "$1" == "r" ]]; then
 		exit
 	fi
 fi
 
-# Ensure a PIDs file exists
+# Ensure a PIDs file exists before continuing
 if [ ! -f "$pids" ]; then
 	echo 'No PIDs! Try running ./switch.sh "r" to refresh PIDs.'
     exit
 fi
 
-# Get a target to switch to
+# Target selection
 mapfile -t pids < "$dir/pids.txt"
 if [[ "$1" == *f || "$1" == *b ]]; then
+
 	# Cycle switch
 	cycle=$(cat "$dir/cycle.txt")
 	tar="${pids["$cycle"]}"
@@ -54,12 +56,13 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 	echo "$cycle" > "$dir/cycle.txt"
 else
 	# Targeted switch
-	if [[ ${#pids} == 1 ]]; then
-		tar="${$pids["$1-1"]}"
+	length="$1"
+	if [[ ${#length} -le 1 ]]; then
+		echo "Easy"
+		tar="${pids["$1-1"]}"
 	else
-		maths=$(echo "$1"| cut -c 2)
-		echo $maths
-		tar="${pids["$maths-1"]}"
+		trimmed=$(echo "$1"| cut -c 2)
+		tar="${pids["$trimmed-1"]}"
 	fi
 	
 	# Prevent out-of-bounds selection

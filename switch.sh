@@ -34,12 +34,11 @@ fi
 
 # Ensure client file exists before continuing
 if [ ! -f "$clients" ]; then
-	echo 'No client list! Try running ./switch.sh "r" to refresh PIDs.'
     exit
 fi
 
 # Cycled switching ("f", "b")
-mapfile -t clients < "$data/clients.txt"
+mapfile -t clients < "$clients"
 if [[ "$1" == *f || "$1" == *b ]]; then
 
 	# Read current cycle
@@ -82,7 +81,7 @@ fi
 kdotool windowactivate "$target"
 
 # Read blocked clients
-mapfile -t blocks < "$data/blocks.txt"
+mapfile -t blocks < "$blocks"
 
 # Look through active EVE clients
 for client in $(kdotool search --classname "$evesteamid")

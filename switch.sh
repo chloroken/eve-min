@@ -2,14 +2,14 @@
 
 # Locate current working directory
 dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+pids="$dir/pids.txt"
+blocks="$dir/bpids.txt"
 
 # Refresh PIDs
-if [[ "$1" == "r" ]]; then
+if [[ "$1" == r* ]]; then
 
 	# Clean up existing PID files
-	pids="$dir/pids.txt"
 	rm "$pids"
-	blocks="$dir/bpids.txt"
 	rm "$blocks"
 
 	# Store PIDs of active characters
@@ -22,21 +22,27 @@ if [[ "$1" == "r" ]]; then
 		$dir/kdotool search --name "$line" >> "$blocks"
 	done
 
-	exit
+	if [[ "$1" == "r" ]]; then
+		exit
+	fi
+fi
+
+# Ensure a PIDs file exists
+if [ ! -f "$pids" ]; then
+	echo 'No PIDs! Try running ./switch.sh "r" to refresh PIDs.'
+    exit
 fi
 
 # Get a target to switch to
 mapfile -t pids < "$dir/pids.txt"
-if [[ "$1" == "f" || "$1" == "b" ]]; then
-
+if [[ "$1" == *f || "$1" == *b ]]; then
 	# Cycle switch
 	cycle=$(cat "$dir/cycle.txt")
 	tar="${pids["$cycle"]}"
 	
-	# Increment forward
-	if [[ "$1" == "f" ]]; then ((cycle++));
-	# Increment backward
-	elif [[ "$1" == "b" ]]; then ((cycle--));
+	# Increment cycle counter
+	if [[ "$1" == *f ]]; then ((cycle++));
+	elif [[ "$1" == *b ]]; then ((cycle--));
 	fi
 	
 	# Wrap around when bounds are hit

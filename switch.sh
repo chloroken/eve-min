@@ -7,6 +7,7 @@ clientlist="$data/clientlist.txt"
 blocklist="$data/blocklist.txt"
 clients="$data/clients.txt"
 blocks="$data/blocks.txt"
+
 # Initialize magic variables
 arglen=${#1}
 evesteamid="steam_app_8500"

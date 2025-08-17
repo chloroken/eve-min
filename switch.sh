@@ -43,7 +43,7 @@ mapfile -t clients < "$clientdata"
 if [[ "$1" == *f || "$1" == *b ]]; then
 
 	# Read current cycle
-	cycle=$(cat "$cycledata")
+	cycle=$(cat "$data/cycle.txt")
 	target="${clients["$cycle"]}"
 	
 	# Increment cycle counter
@@ -57,7 +57,7 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 	fi
 
 	# Save new position in cycle
-	echo "$cycle" > "$data/cycle.txt"
+	echo "$cycle" > "$cycledata"
 	
 # Targeted switch ("1", "2" etc)
 else
@@ -84,17 +84,29 @@ kdotool windowactivate "$target"
 # Read blocked clients
 mapfile -t blocks < "$blockdata"
 
-# Look through active EVE clients
-for activeclient in $(kdotool search --classname "$evesteamid")
-do
-	for blockedclient in "${blocks[@]}"
+# Look for target (without any blocks)
+if [ ! -f "$blocks" ]; then
+	for client in $(kdotool search --classname "$evesteamid")
 	do
 		# Minimize clients that aren't blocked or targeted
-		if [[ "$activeclient" != "$blockedclient" && "$activeclient" != "$target" ]]; then
-			kdotool windowminimize "$activeclient"
+		if [[ "$client" != "$target" ]]; then
+			kdotool windowminimize "$client"
 		fi
 	done
-done
+# Look for target with a blocklist
+else
+	for client in $(kdotool search --classname "$evesteamid")
+	do
+		# Look through blocklist
+		for block in "${blocks[@]}"
+		do
+			# Minimize clients that aren't blocked or targeted
+			if [[ "$client" != "$block" && "$client" != "$target" ]]; then
+				kdotool windowminimize "$client"
+			fi
+		done
+	done
+fi
 
 # Activate target client again to "ready" mouse
 kdotool windowactivate "$target"

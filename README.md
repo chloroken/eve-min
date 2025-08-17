@@ -60,7 +60,7 @@ Example shortcut ideas:
    3) Quick cycler with "main" button that also refreshes:
       - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
       - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
-      - `bash -c '~/Documents/eve-min/switch.sh "r1"'` switches to the main (if first in list) & refreshes active clients
+      - `bash -c '~/Documents/eve-min/switch.sh "r1"'` switches to first char & refreshes clients
 
 Example routine:
    1) Log into your EVE Online characters

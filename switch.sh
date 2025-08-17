@@ -43,7 +43,7 @@ mapfile -t clients < "$clientdata"
 if [[ "$1" == *f || "$1" == *b ]]; then
 
 	# Read current cycle
-	cycle=$(cat "$data/cycle.txt")
+	cycle=$(cat "$cycledata")
 	target="${clients["$cycle"]}"
 	
 	# Increment cycle counter

@@ -85,7 +85,7 @@ kdotool windowactivate "$target"
 mapfile -t blocks < "$blockdata"
 
 # Look for target (without any blocks)
-if [ ! -f "$blocks" ]; then
+if [ ! -f "$blockdata" ]; then
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 		# Minimize clients that aren't blocked or targeted

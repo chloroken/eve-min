@@ -1,6 +1,6 @@
 # EVE-min - a client-switcher for KDE Plasma
 
-A client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. This is a replacement for [EVE-O Preview](https://github.com/Proopai/eve-o-preview)'s keybound client-switching for those who use "minimize inactive clients" for the performance bump but don't use the thumbnail preview function.
+A client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. **EVE-min** is a replacement for [EVE-O Preview](https://github.com/Proopai/eve-o-preview)'s keybound client-switching for those who use "minimize inactive clients" for the performance bump but don't use the thumbnail preview function.
 
 **NOTE**: This tool isn't against EVE's ToS because it just switches windows. No actions touch the client.
 
@@ -20,7 +20,7 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # How It Works
 
-EVE-min is multifuctional based on which arguments it's supplied. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active PIDs, the `"r"` argument is used.
+**EVE-min** behaves based on the argument you supply it. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active PIDs, the `"r"` argument is used.
 
 The refresh argument is combinable with others with the following syntax: `"r1"`, `"r2"`, `"r3"`, etc, or `"rf"` and `"rb"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
 

@@ -5,8 +5,9 @@ dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 clientlist="$dir/characters.txt"
 blocklist="$dir/blocklist.txt"
 data="$dir/data"
-clients="$data/clients.txt"
-blocks="$data/blocks.txt"
+clientdata="$data/clients.txt"
+blockdata="$data/blocks.txt"
+cycledata="$data/cycle.txt"
 
 # Initialize magic variables
 arglen=${#1}
@@ -16,14 +17,14 @@ evesteamid="steam_app_8500"
 if [[ "$1" == r* ]]; then
 
 	# Clean up existing client files
-	rm "$clients" "$blocks"
+	rm "$clientdata" "$blockdata"
 
 	# Store client IDs of active & blocked characters
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
-		kdotool search --name "$line" >> "$clients";
+		kdotool search --name "$line" >> "$clientdata";
 	done
 	cat "$blocklist" | while read -r line || [ -n "$line" ]; do
-		kdotool search --name "$line" >> "$blocks"
+		kdotool search --name "$line" >> "$blockdata"
 	done
 
 	# If this was just a refresh (e.g., "r", not "rf"), stop now
@@ -33,16 +34,16 @@ if [[ "$1" == r* ]]; then
 fi
 
 # Ensure client file exists before continuing
-if [ ! -f "$clients" ]; then
+if [ ! -f "$clientdata" ]; then
     exit
 fi
 
 # Cycled switching ("f", "b")
-mapfile -t clients < "$clients"
+mapfile -t clients < "$clientdata"
 if [[ "$1" == *f || "$1" == *b ]]; then
 
 	# Read current cycle
-	cycle=$(cat "$data/cycle.txt")
+	cycle=$(cat "$cycledata")
 	target="${clients["$cycle"]}"
 	
 	# Increment cycle counter
@@ -81,17 +82,16 @@ fi
 kdotool windowactivate "$target"
 
 # Read blocked clients
-mapfile -t blocks < "$blocks"
+mapfile -t blocks < "$blockdata"
 
 # Look through active EVE clients
-for client in $(kdotool search --classname "$evesteamid")
+for activeclient in $(kdotool search --classname "$evesteamid")
 do
-	# Look through blocklist
-	for block in "${blocks[@]}"
+	for blockedclient in "${blocks[@]}"
 	do
 		# Minimize clients that aren't blocked or targeted
-		if [[ "$client" != "$block" && "$client" != "$target" ]]; then
-			kdotool windowminimize "$client"
+		if [[ "$activeclient" != "$blockedclient" && "$activeclient" != "$target" ]]; then
+			kdotool windowminimize "$activeclient"
 		fi
 	done
 done

@@ -26,7 +26,7 @@ The refresh argument is combinable with others with the following syntax: `"r1"`
 
 # Dependencies
 
-- [Wayland](https://wayland.freedesktop.org/) Display Server Protocol (*you're probably using this*)
+- [Wayland Display Server Protocol](https://wayland.freedesktop.org/) (*you're probably using this*)
 - [Kwin Compositor](https://github.com/KDE/kwin) (*comes with [KDE Plasma](https://kde.org/plasma-desktop/)*)
 - The `curl`, `git`, and `nano` packages (*you already have these installed*)
 

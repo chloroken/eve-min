@@ -20,7 +20,7 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # How It Works
 
-**EVE-min** behaves based on the argument you supply it. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active PIDs, the `"r"` argument is used.
+**EVE-min** behaves based on the argument you supply it. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active clients, the `"r"` argument is used.
 
 The refresh argument is combinable with others with the following syntax: `"r1"`, `"r2"`, `"r3"`, etc, or `"rf"` and `"rb"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
 
@@ -73,5 +73,6 @@ Example routine:
 2) ~~Blocklist (for launcher or other purposes)~~
 3) ~~Add `kdotool` to `$path`~~
 4) ~~Create an installation script that pulls `kdotool`~~
-5) Thoroughly test the script with volunteers
-6) Allow for higher-count targeted switching (stops at 9 now)
+5) ~~Allow for higher-count targeted switching (stops at 9 now)~~
+6) Add `"m"` flag to minimize all clients
+7) Add `"k"` flag to kill all clients

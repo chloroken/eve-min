@@ -38,7 +38,7 @@ if [ ! -f "$clientdata" ]; then
     exit
 fi
 
-# Cycled switching ("f", "b")
+# Cycle switching ("f", "b")
 mapfile -t clients < "$clientdata"
 if [[ "$1" == *f || "$1" == *b ]]; then
 
@@ -51,27 +51,27 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 	elif [[ "$1" == *b ]]; then ((cycle--));
 	fi
 	
-	# Wrap around when bounds are hit
+	# Wrap around array bounds
 	if [[ "$cycle" -ge "${#clients[@]}" ]]; then ((cycle=0));
 	elif [[ "$cycle" -lt 0 ]]; then ((cycle="${#clients[@]}"-1));
 	fi
-
+	
 	# Save new position in cycle
 	echo "$cycle" > "$cycledata"
-	
+
 # Targeted switch ("1", "2" etc)
 else
 
-	# Simple switch, target is argument (e.g., "1", "2")
+	# Simple switch, target is arg (e.g., "1", "2")
 	if [[ $arglen -le 1 ]]; then
 		target="${clients["$1-1"]}"
 		
-	# Refreshing switch, target is trimmed (e.g., drop "r" from r1")
+	# Refresh switch, trim to target (e.g., drop "r" from r1")
 	else
 		trimmed=$(echo "$1" | cut -c -f2-)
 		target="${clients["$trimmed-1"]}"
 	fi
-
+	
 	# Prevent out-of-bounds selection
 	if [[ "$1" -gt "${#clients[@]}" ]]; then
 		exit
@@ -84,17 +84,8 @@ kdotool windowactivate "$target"
 # Read blocked clients
 mapfile -t blocks < "$blockdata"
 
-# Look for target (without any blocks)
-if [ ! -f "$blockdata" ]; then
-	for client in $(kdotool search --classname "$evesteamid")
-	do
-		# Minimize clients that aren't blocked or targeted
-		if [[ "$client" != "$target" ]]; then
-			kdotool windowminimize "$client"
-		fi
-	done
 # Look for target with a blocklist
-else
+if [ -s "$blockdata" ]; then
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 		# Look through blocklist
@@ -105,6 +96,16 @@ else
 				kdotool windowminimize "$client"
 			fi
 		done
+	done
+	
+# Look for target (no blocks)
+else
+	for client in $(kdotool search --classname "$evesteamid")
+	do
+		# Minimize clients that aren't targeted
+		if [[ "$client" != "$target" ]]; then
+			kdotool windowminimize "$client"
+		fi
 	done
 fi
 

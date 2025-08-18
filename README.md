@@ -20,23 +20,28 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # How It Works
 
-**EVE-min** behaves based on the argument you supply it. To switch to a specific client in a lineup, numbered arguments like `"1"` `"2"` and `"3"` are used. To cycle through active clients, `"f"` for forward and `"b"` for backward are used. To refresh the active clients, the `"r"` argument is used.
+**EVE-min** uses flags to determine behavior:
 
-The refresh argument is combinable with others with the following syntax: `"r1"`, `"r2"`, `"r3"`, etc, or `"rf"` and `"rb"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
+   - `"f"` and `"b"` cycle forward and backward
+   - `"1"`, `"3"`, and `"12"` target specific clients
+   - `"r"` refreshes active clients
+   - `"m"` minimizes all clients
+   - `"k"` kills all clients
+
+The `"r"` flag can be combined with target flags, like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
 
 # Dependencies
 
 - [Kwin Compositor](https://github.com/KDE/kwin) *(comes with the [KDE Plasma](https://kde.org/plasma-desktop/) Desktop Environment)*
-- The `curl`, `git`, and `nano` packages *(you already have these installed by default)*
+- The `curl` and `git` packages *(you already have these)*
 
 # Installation
 
 Open a terminal and enter the following commands:
 1) `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
 2) `git clone https://github.com/chloroken/eve-min ~/Documents/`
-3) `nano ~/Documents/eve-min/characters.txt`
 
-Now, enter your character names in `characters.txt` and proceed to the **Usage Guide** section below.
+Now, open up `~/Documents/eve-min/characters.txt` with a text editor, add your characters, and proceed to the **Usage Guide** section below.
 
 # Uninstallation
 
@@ -74,5 +79,5 @@ Example routine:
 3) ~~Add `kdotool` to `$path`~~
 4) ~~Create an installation script that pulls `kdotool`~~
 5) ~~Allow for higher-count targeted switching (stops at 9 now)~~
-6) Add `"m"` flag to minimize all clients
-7) Add `"k"` flag to kill all clients
+6) ~~Add `"m"` flag to minimize all clients~~
+7) ~~Add `"k"` flag to kill all clients~~

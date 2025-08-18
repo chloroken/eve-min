@@ -33,6 +33,24 @@ if [[ "$1" == r* ]]; then
 	fi
 fi
 
+# Minimize all clients ("m")
+if [[ "$1" == *m ]]; then
+	for client in $(kdotool search --classname "$evesteamid")
+	do
+		kdotool windowminimize "$client"
+	done
+	exit
+fi
+
+# Kill all clients ("k")
+if [[ "$1" == *k ]]; then
+	for client in $(kdotool search --classname "$evesteamid")
+	do
+		pkill "exefile.exe"
+	done
+	exit
+fi
+
 # Ensure client file exists before continuing
 if [ ! -f "$clientdata" ]; then
     exit

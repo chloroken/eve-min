@@ -37,9 +37,9 @@ fi
 if [ ! -f "$clientdata" ]; then
     exit
 fi
+mapfile -t clients < "$clientdata"
 
 # Cycle switching ("f", "b")
-mapfile -t clients < "$clientdata"
 if [[ "$1" == *f || "$1" == *b ]]; then
 
 	# Read current cycle
@@ -58,18 +58,17 @@ if [[ "$1" == *f || "$1" == *b ]]; then
 	
 	# Save new position in cycle
 	echo "$cycle" > "$cycledata"
-
+	
 # Targeted switch ("1", "2" etc)
 else
-
-	# Simple switch, target is arg (e.g., "1", "2")
-	if [[ $arglen -le 1 ]]; then
-		target="${clients["$1-1"]}"
-		
 	# Refresh switch, trim to target (e.g., drop "r" from r1")
-	else
+	if [[ "$1" == r* ]]; then
 		trimmed=$(echo "$1" | cut -c -f2-)
 		target="${clients["$trimmed-1"]}"
+		
+	# Simple switch, target is arg (e.g., "1", "2")
+	else
+		target="${clients["$1-1"]}"
 	fi
 	
 	# Prevent out-of-bounds selection

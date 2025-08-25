@@ -30,7 +30,7 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # Dependencies
 
-- [Kwin Compositor](https://github.com/KDE/kwin) *(comes with the [KDE Plasma](https://kde.org/plasma-desktop/ Desktop Environment))*
+- [Kwin Compositor](https://github.com/KDE/kwin) *(comes with the [KDE Plasma Desktop Environment](https://kde.org/plasma-desktop/))*
 - The `curl` and `git` packages *(you already have these)*
 
 # Installation

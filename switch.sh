@@ -10,31 +10,36 @@ blockdata="$data/blocks.txt"
 cycledata="$data/cycle.txt"
 
 # Initialize magic variables
+flags="$1"
 arglen=${#1}
 evesteamid="steam_app_8500"
 
 # Refresh active client list ("r")
-if [[ "$1" == r* ]]; then
+if [[ "$flags" == r* ]]; then
 
 	# Clean up existing client files
 	rm "$clientdata" "$blockdata"
 
 	# Store client IDs of active & blocked characters
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
-		kdotool search --name "$line" >> "$clientdata";
+		kdotool search --name "$line" >> "$clientdata"
 	done
 	cat "$blocklist" | while read -r line || [ -n "$line" ]; do
 		kdotool search --name "$line" >> "$blockdata"
 	done
 
 	# If this was just a refresh (e.g., "r", not "rf"), stop now
-	if [[ $arglen -le 1 ]]; then
+	if [ "$flags" == r ]; then
 		exit
+
+	# Trim two-digit flags (e.g., "r1" or "rb" -> "1" or "b", etc.)
+	else
+		flags=$(echo "$1" | cut -c 2-)
 	fi
 fi
 
 # Minimize all clients ("m")
-if [[ "$1" == *m ]]; then
+if [ "$flags" == m ]; then
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 		kdotool windowminimize "$client"
@@ -43,7 +48,7 @@ if [[ "$1" == *m ]]; then
 fi
 
 # Kill all clients ("k")
-if [[ "$1" == *k ]]; then
+if [ "$flags" == k ]; then
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 		pkill "exefile.exe"
@@ -55,74 +60,76 @@ fi
 if [ ! -f "$clientdata" ]; then
     exit
 fi
+
+# Map client data to a temporary array
 mapfile -t clients < "$clientdata"
+clientcount="${#clients[@]}"
 
-# Cycle switching ("f", "b")
-if [[ "$1" == *f || "$1" == *b ]]; then
+# Forward cycle target selection ("f")
+if [ "$flags" == f ]; then
 
-	# Read current cycle
-	cycle=$(cat "$cycledata")
-	target="${clients["$cycle"]}"
+	# Get target window based on cycle
+	currentcycle=$(cat "$cycledata")
+	target="${clients["$currentcycle"]}"
 	
 	# Increment cycle counter
-	if [[ "$1" == *f ]]; then ((cycle++));
-	elif [[ "$1" == *b ]]; then ((cycle--));
+	((currentcycle++))
+	if [ "$currentcycle" -ge "$clientcount" ]; then
+		((currentcycle=0));
 	fi
 	
-	# Wrap around array bounds
-	if [[ "$cycle" -ge "${#clients[@]}" ]]; then ((cycle=0));
-	elif [[ "$cycle" -lt 0 ]]; then ((cycle="${#clients[@]}"-1));
+	# Save new cycle
+	echo "$currentcycle" > "$cycledata"
+
+# Backward cycle target selection ("b")
+elif [ "$flags" == b ]; then
+
+	# Get target window based on cycle
+	currentcycle=$(cat "$cycledata")
+	target="${clients["$currentcycle"]}"
+	
+	# Increment cycle counter
+	((currentcycle--))
+	if [ "$currentcycle" -lt 0 ]; then
+		((currentcycle="$clientcount"-1));
 	fi
 	
-	# Save new position in cycle
-	echo "$cycle" > "$cycledata"
+	# Save new cycle
+	echo "$currentcycle" > "$cycledata"
 	
-# Targeted switch ("1", "2" etc)
+# Specific index target selection ("#")
 else
-	# Refresh switch, trim to target (e.g., drop "r" from r1")
-	if [[ "$1" == r* ]]; then
-		trimmed=$(echo "$1" | cut -c -f2-)
-		target="${clients["$trimmed-1"]}"
-		
-	# Simple switch, target is arg (e.g., "1", "2")
-	else
-		target="${clients["$1-1"]}"
-	fi
-	
-	# Prevent out-of-bounds selection
-	if [[ "$1" -gt "${#clients[@]}" ]]; then
-		exit
-	fi
+	target="${clients["$flags-1"]}"
 fi
 
 # Activate target client to bring it forward
 kdotool windowactivate "$target"
 
-# Read blocked clients
-mapfile -t blocks < "$blockdata"
+# Switch (without blocks)
+if [ ! -f "$blockdata" ]; then
+	for client in $(kdotool search --classname "$evesteamid")
+	do
+		# Minimize clients that aren't targeted
+		if [ "$client" != "$target" ]; then
+			kdotool windowminimize "$client"
+		fi
+	done
 
-# Look for target with a blocklist
-if [ -s "$blockdata" ]; then
+# Switch (with blocks)
+elif
+	mapfile -t blocks < "$blockdata"
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 		# Look through blocklist
 		for block in "${blocks[@]}"
 		do
 			# Minimize clients that aren't blocked or targeted
-			if [[ "$client" != "$block" && "$client" != "$target" ]]; then
-				kdotool windowminimize "$client"
+			if [ "$client" != "$block" ]; then
+				if [ "$client" != "$target" ]; then
+					kdotool windowminimize "$client"
+				fi
 			fi
 		done
-	done
-	
-# Look for target (no blocks)
-else
-	for client in $(kdotool search --classname "$evesteamid")
-	do
-		# Minimize clients that aren't targeted
-		if [[ "$client" != "$target" ]]; then
-			kdotool windowminimize "$client"
-		fi
 	done
 fi
 

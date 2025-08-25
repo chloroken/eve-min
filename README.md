@@ -49,7 +49,9 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # Usage Guide
 
-In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scripts to hotkeys.
+In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scripts to hotkeys with the following format:
+   - `bash -c '~/Documents/eve-min/switch.sh "<flag>"'`
+   - Replace `<flag>` with the desired flag
 
 ![](https://i.imgur.com/OQn4WRL.png) ![](https://i.imgur.com/PJ1Zw2M.png)
    

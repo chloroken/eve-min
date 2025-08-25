@@ -1,8 +1,8 @@
 # EVE-min - a client-switcher for KDE Plasma
 
-A client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully-utilize the EVE client's throttling mechanics by minimizing inactive windows. **EVE-min** is a replacement for [EVE-O Preview](https://github.com/Proopai/eve-o-preview)'s keybound client-switching for those who use "minimize inactive clients" for the performance bump but don't use the thumbnail preview function.
+A lightning-fast client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows.
 
-**NOTE**: This tool isn't against EVE's ToS because it just switches windows. No actions touch the client.
+**NOTE**: This tool isn't against EVE's ToS. No actions touch the client.
 
 # Performance Increase
 
@@ -22,13 +22,13 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 **EVE-min** uses flags to determine behavior:
 
+   - `"r"` refreshes active clients
    - `"f"` and `"b"` cycle forward and backward
    - `"1"`, `"3"`, and `"12"` target specific clients
-   - `"r"` refreshes active clients
    - `"m"` minimizes all clients
    - `"k"` kills all clients
 
-The `"r"` flag can be combined with target flags, like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to avoid needing to refresh whenever new characters are logged in. However, **refreshing with every switch may have a negative impact** on slower hardware or with too many clients.
+**Combination Flags**: The `"r"` flag can be appended to target flags, like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to perform both actions at once, avoiding the need for a dedicated refresh button. However, be aware that **refreshing with every switch will have a negative performance impact**. For the fastest-possible switching, don't use combination flags.
 
 # Dependencies
 
@@ -81,5 +81,3 @@ Example routine:
 5) ~~Allow for higher-count targeted switching (stops at 9 now)~~
 6) ~~Add `"m"` flag to minimize all clients~~
 7) ~~Add `"k"` flag to kill all clients~~
-8) Create `alias` instructions for eve-min
-9) Remove `kdotool` from $PATH to stay portable

@@ -105,18 +105,8 @@ fi
 # Activate target client to bring it forward
 kdotool windowactivate "$target"
 
-# Switch (without blocks)
-if [ ! -f "$blockdata" ]; then
-	for client in $(kdotool search --classname "$evesteamid")
-	do
-		# Minimize clients that aren't targeted
-		if [ "$client" != "$target" ]; then
-			kdotool windowminimize "$client"
-		fi
-	done
-
 # Switch (with blocks)
-elif
+if [ -s "$blockdata" ]; then
 	mapfile -t blocks < "$blockdata"
 	for client in $(kdotool search --classname "$evesteamid")
 	do
@@ -130,6 +120,16 @@ elif
 				fi
 			fi
 		done
+	done
+	
+# Switch (without blocks)
+else
+	for client in $(kdotool search --classname "$evesteamid")
+	do
+		# Minimize clients that aren't targeted
+		if [ "$client" != "$target" ]; then
+			kdotool windowminimize "$client"
+		fi
 	done
 fi
 

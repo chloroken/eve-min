@@ -1,8 +1,6 @@
-# EVE-min - a client-switcher for KDE Plasma
+# EVE-min - a client switcher for EVE Online + KDE Plasma
 
-A lightning-fast client-switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows.
-
-**NOTE**: This tool isn't against EVE's ToS. No actions touch the client.
+A lightning-fast client switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows. **EVE-min** can also minimize or kill all EVE clients. This tool is congruent with EVE's ToS because no actions touch the client.
 
 # Performance Increase
 

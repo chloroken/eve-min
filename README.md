@@ -48,7 +48,7 @@ Now, edit `~/Documents/eve-min/characters.txt` to add your characters then proce
 
 # Usage Guide
 
-In KDE Plasma's `System Settings` -> `Keyboard` -> `Shortcuts`, bind the scripts to hotkeys.
+In KDE Plasma's `System Settings` --> `Keyboard` --> `Shortcuts`, bind the scripts to hotkeys.
 
 ![](https://i.imgur.com/OQn4WRL.png) ![](https://i.imgur.com/PJ1Zw2M.png)
    

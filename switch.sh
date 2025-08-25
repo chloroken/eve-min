@@ -99,6 +99,11 @@ elif [ "$flags" == b ]; then
 	
 # Specific index target selection ("#")
 else
+
+	# Prevent out-of-bounds selection
+	if [ "$flags" -gt "$clientcount" ]; then
+		exit
+	fi
 	target="${clients["$flags-1"]}"
 fi
 

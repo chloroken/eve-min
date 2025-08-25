@@ -35,10 +35,12 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # Installation
 
-1) Install `kdotool` by entering this command into a console (one line): `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-2) Download the **EVE-min** repository with this console command: `git clone https://github.com/chloroken/eve-min ~/Documents/`
-3) Use a text editor to open `~/Documents/eve-min/characters.txt` and add your characters
-4) Proceed to the **Usage Guide** section below
+1) Install `kdotool` with this console command (one line):
+   - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
+2) Download the **EVE-min** repository with this console command:
+   - `git clone https://github.com/chloroken/eve-min ~/Documents/`
+4) Use a text editor to open `~/Documents/eve-min/characters.txt` and add your characters
+5) Proceed to the **Usage Guide** section below
 
 # Uninstallation
 

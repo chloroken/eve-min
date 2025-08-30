@@ -12,7 +12,8 @@ cycledata="$data/cycle.txt"
 # Initialize magic variables
 flags="$1"
 arglen=${#1}
-evesteamid="steam_app_8500"
+evesteamid="steam_app_8500" # steam
+#evesteamid="steam_app_default" # lutris
 
 # Refresh active client list ("r")
 if [[ "$flags" == r* ]]; then

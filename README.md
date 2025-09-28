@@ -38,11 +38,16 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 **EVE-min** is a script that you can run as a command to manipulate your EVE clients. The script can be provided flags to modify its behavior. This flexibility allows for custom or multiple setups depending on use case.
 
-   - `"r"` refreshes active clients, storing them for other commands to use (excepts anything in `blocklist.txt`)
+   - `"r"` refreshes active clients
+      - This command creates a list of currently-logged-in clients
+      - The list is used by other commands
+      - Any clients listed in `blocklist.txt` will be ignored
    - `"f"` and `"b"` cycle forward and backward through clients
-   - `"1"`, `"3"`, and `"12"` target specific clients based on their order in `characters.txt`
-   - `"m"` minimizes all clients (ignores `blocklist.txt`)
-   - `"k"` kills all clients (ignores `blocklist.txt`)
+   - `"1"`, `"3"`, and `"12"` target specific clients
+      - This command will look for the Nth active character
+      - This uses the order listed `characters.txt`
+   - `"m"` minimizes all clients, ignoring `blocklist.txt`
+   - `"k"` kills all clients, ignoring `blocklist.txt`
 
 **Combination Flags**: The `"r"` flag can be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to perform both actions at once, avoiding the need for a dedicated refresh button. However, be aware that **refreshing with every switch will have a negative performance impact**. Unless performance doesn't matter to you, use combination flags sparingly.
 

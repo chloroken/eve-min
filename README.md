@@ -6,6 +6,8 @@ A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully
 
 Many players believe that if a window is out of focus or in another virtual desktop/workspace, it's throttled. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients + max graphics) I see this message on the in-game FPS window when switching and use over 90% of the GPU while playing:
 
+<div align="center">
+   
 ![](https://i.imgur.com/DNjdWlJ.png)
 
 ![](https://i.imgur.com/WT68EQP.png) 
@@ -15,6 +17,7 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 ![](https://i.imgur.com/RL25rqR.png)
 
 ![](https://i.imgur.com/NxriGDH.png)
+</div>
 
 # How It Works
 
@@ -53,11 +56,18 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
    - `bash -c '~/Documents/eve-min/switch.sh "<flag>"'`
    - Replace `<flag>` with the desired flag
 
+<div align="center">
+   
+*Adding a new shortcut:*
+
 ![](https://i.imgur.com/OQn4WRL.png)
-*adding a new shortcut*
+
+*Defining the shortcut command & keybind:*
 
 ![](https://i.imgur.com/PJ1Zw2M.png)
-*defining the shortcut command & keybind*
+
+</div>
+
    
 Example shortcut ideas:
    1) One-button wonder:

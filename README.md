@@ -16,15 +16,15 @@ On the other hand, minimizing a client will trigger both layers of throttling: "
 
 ![](https://i.imgur.com/RL25rqR.png)</div>
 
-### Demonstration
+### Demonstration (5 clients + max graphics)
 
-Without minimizing (5 clients + max graphics) I use over 90% of the GPU while playing:
+Without minimizing I use over 90% of the GPU while multiboxing:
 
 <div align="center">
 
 ![](https://i.imgur.com/WT68EQP.png)</div>
 
-With minimizing (5 clients + max graphics) I use less than 30% of the GPU while playing:
+However, with minimizing I use less than 30% of the GPU while multiboxing:
 
 <div align="center">
    

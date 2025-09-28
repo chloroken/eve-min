@@ -6,32 +6,34 @@ A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully
 
 Many players believe that if a window is out of focus or in another virtual desktop/workspace, that window will be throttled for performance purposes. But, if a window is out of focus but **not minimized**, it will still consume more resources than it needs. Therefore, minimizing inactive windows can dramatically boost peformance.
 
-<div align="center">
-
-This is bad:
-   
-![](https://i.imgur.com/DNjdWlJ.png)
-
 This is good:
+   
+<div align="center">
+   
+![](https://i.imgur.com/DNjdWlJ.png)</div>
 
+But this is much better:
+
+<div align="center">
+   
 ![](https://i.imgur.com/RL25rqR.png)
-
 </div>
 
 Without minimizing (5 clients + max graphics) I use over 90% of the GPU while playing:
 
 <div align="center">
 
-![](https://i.imgur.com/WT68EQP.png) 
+![](https://i.imgur.com/WT68EQP.png) </div>
 
 With minimizing (5 clients + max graphics) I use less than 30% of the GPU while playing:
 
-![](https://i.imgur.com/NxriGDH.png)
-</div>
+<div align="center">
+   
+![](https://i.imgur.com/NxriGDH.png)</div>
 
 # How It Works
 
-**EVE-min** uses flags to determine behavior:
+**EVE-min** is a script that you can call to manipulate your EVE clients. The script can be provided flags to modify its behavior as follows:
 
    - `"r"` refreshes active clients
    - `"f"` and `"b"` cycle forward and backward

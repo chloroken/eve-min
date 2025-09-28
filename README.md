@@ -24,7 +24,7 @@ Without minimizing I use over 90% of the GPU while multiboxing:
 
 ![](https://i.imgur.com/WT68EQP.png)</div>
 
-However, with minimizing I use less than 30% of the GPU while multiboxing:
+With minimizing I use less than 30% of the GPU while multiboxing:
 
 <div align="center">
    

@@ -10,7 +10,7 @@ Many players believe that if an EVE client's window is out of focus or in anothe
 <div align="center">
    
 ![](https://i.imgur.com/DNjdWlJ.png)</div>
-On the other hand, minimizing a client will trigger both layers of throttling: "Out of Focus" and "Hidden Window" and will consume virtually no resources except some VRAM. Therefore minimizing inactive windows dramatically boosts peformance while multiboxing.
+On the other hand, minimizing a client will trigger both layers of throttling: "Not focused" and "Window hidden" and will consume virtually no resources except some VRAM. Therefore minimizing inactive windows dramatically boosts peformance while multiboxing.
 
 <div align="center">
 

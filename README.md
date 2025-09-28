@@ -4,6 +4,7 @@ A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully
 
 # Performance Increase
 
+## Out of Focus vs. Hidden
 Many players believe that if an EVE client's window is out of focus or in another virtual desktop/workspace, that window will be throttled for performance purposes. But, if a window is out of focus but **not minimized**, it will only be partially throttled. Therefore, minimizing inactive windows can dramatically boost peformance.
 
 This is good:
@@ -18,6 +19,8 @@ But this is much better:
    
 ![](https://i.imgur.com/RL25rqR.png)
 </div>
+
+## Demonstration
 
 Without minimizing (5 clients + max graphics) I use over 90% of the GPU while playing:
 

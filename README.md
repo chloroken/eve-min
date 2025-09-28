@@ -64,6 +64,8 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # Usage Guide
 
+## Setting up Shortcuts
+
 In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scripts with the following format:
    - `bash -c '~/Documents/eve-min/switch.sh "<flag>"'`
    - Replace `<flag>` with the desired flag
@@ -80,8 +82,7 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 
 </div>
 
-   
-Example shortcut ideas:
+## Example shortcut ideas:
    1) One-button wonder:
       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
    2) Targeted switching with manual refreshing:
@@ -94,7 +95,7 @@ Example shortcut ideas:
       - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
       - `bash -c '~/Documents/eve-min/switch.sh "r1"'` switches to first char & refreshes clients
 
-Example routine:
+## Example routine:
    1) Log into your EVE Online characters
    2) Use any shortcut with the `"r"` flag
    3) Use your keybinds to switch between clients

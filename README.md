@@ -2,6 +2,18 @@
 
 A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows. **EVE-min** can also perform blanket actions like killing or minimizing all EVE clients. This tool is congruent with EVE's ToS because no actions touch the client.
 
+<div align="center">
+
+This is bad:
+   
+![](https://i.imgur.com/DNjdWlJ.png)
+
+This is good:
+
+![](https://i.imgur.com/RL25rqR.png)
+
+</div>
+
 # Performance Increase
 
 Many players believe that if a window is out of focus or in another virtual desktop/workspace, it's throttled. But, if a window is out of focus but **not minimized**, it will still consume resources. Without minimizing (5 clients + max graphics) I see this message on the in-game FPS window when switching and use over 90% of the GPU while playing:
@@ -9,14 +21,10 @@ Many players believe that if a window is out of focus or in another virtual desk
 <div align="center">
 
 ![](https://i.imgur.com/WT68EQP.png) 
-   
-![](https://i.imgur.com/DNjdWlJ.png)
 
 With minimizing (5 clients + max graphics) I use less than 30% of the GPU while playing:
 
 ![](https://i.imgur.com/NxriGDH.png)
-
-![](https://i.imgur.com/RL25rqR.png)
 </div>
 
 # How It Works

@@ -53,7 +53,11 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
    - `bash -c '~/Documents/eve-min/switch.sh "<flag>"'`
    - Replace `<flag>` with the desired flag
 
-![](https://i.imgur.com/OQn4WRL.png) ![](https://i.imgur.com/PJ1Zw2M.png)
+![](https://i.imgur.com/OQn4WRL.png)
+*adding a new shortcut*
+
+![](https://i.imgur.com/PJ1Zw2M.png)
+*defining the shortcut command & keybind*
    
 Example shortcut ideas:
    1) One-button wonder:

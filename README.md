@@ -49,7 +49,7 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
    - `"m"` minimizes all clients, ignoring `blocklist.txt`
    - `"k"` kills all clients, ignoring `blocklist.txt`
 
-**Combination Flags**: The `"r"` flag can be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to perform both actions at once, avoiding the need for a dedicated refresh button. However, be aware that **refreshing with every switch will have a negative performance impact**. Unless performance doesn't matter to you, use combination flags sparingly.
+**Combination Flags**: The `"r"` flag can be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to perform both actions at once, avoiding the need for a dedicated refresh button. However, be aware that **refreshing slows down switches**. Unless performance doesn't matter to you, use combination flags sparingly.
 
 # Dependencies
 

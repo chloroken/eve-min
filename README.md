@@ -33,7 +33,7 @@ With minimizing (5 clients + max graphics) I use less than 30% of the GPU while 
 
 # How It Works
 
-**EVE-min** is a script that you can call to manipulate your EVE clients. The script can be provided flags to modify its behavior. This allows for a custom or multiple "setups" depending on use case.
+**EVE-min** is a script that you can run as a command to manipulate your EVE clients. The script can be provided flags to modify its behavior. This allows for a custom or multiple "setups" depending on use case.
 
    - `"r"` refreshes active clients
    - `"f"` and `"b"` cycle forward and backward

@@ -12,8 +12,7 @@ cycledata="$data/cycle.txt"
 # Initialize magic variables
 flags="$1"
 arglen=${#1}
-evesteamid="steam_app_8500" # steam
-#evesteamid="steam_app_default" # lutris
+evesteamid="steam_app_8500" #
 
 # Refresh active client list ("r")
 if [[ "$flags" == r* ]]; then
@@ -33,7 +32,7 @@ if [[ "$flags" == r* ]]; then
 	if [ "$flags" == r ]; then
 		exit
 
-	# Trim two-digit flags (e.g., "r1" or "rb" -> "1" or "b", etc.)
+	# Trim "r" from two-digit flags (e.g., "r1" -> "1", etc.)
 	else
 		flags=$(echo "$1" | cut -c 2-)
 	fi
@@ -109,6 +108,8 @@ else
 fi
 
 # Activate target client to bring it forward
+kdotool windowstate --remove BELOW "$client"
+kdotool windowstate --add ABOVE "$target"
 kdotool windowactivate "$target"
 
 # Switch (with blocks)
@@ -122,18 +123,20 @@ if [ -s "$blockdata" ]; then
 			# Minimize clients that aren't blocked or targeted
 			if [ "$client" != "$block" ]; then
 				if [ "$client" != "$target" ]; then
+					kdotool windowstate --add BELOW "$client"
 					kdotool windowminimize "$client"
 				fi
 			fi
 		done
 	done
-	
+
 # Switch (without blocks)
 else
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 		# Minimize clients that aren't targeted
 		if [ "$client" != "$target" ]; then
+			kdotool windowstate --add BELOW "$client"
 			kdotool windowminimize "$client"
 		fi
 	done
@@ -141,3 +144,4 @@ fi
 
 # Activate target client again to "ready" mouse
 kdotool windowactivate "$target"
+kdotool windowstate --remove ABOVE "$target"

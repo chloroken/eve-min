@@ -108,7 +108,7 @@ else
 fi
 
 # Activate target client to bring it forward
-kdotool windowstate --remove BELOW "$client"
+kdotool windowstate --remove BELOW "$target"
 kdotool windowstate --add ABOVE "$target"
 kdotool windowactivate "$target"
 

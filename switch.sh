@@ -20,6 +20,8 @@ if [[ "$flags" == r* ]]; then
 
 	# Store client IDs of active characters
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
+
+		# Use kdotool to check if a specific client is active
 		if [[ "$(kdotool search --name "$line")" ]]; then
 			echo "$line" >> "$clientdata"
 		fi

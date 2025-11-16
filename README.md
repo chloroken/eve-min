@@ -50,7 +50,6 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 
 - [KDE Plasma](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
 - The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(installation instructions below)*
-- The `curl` and `git` packages for ease of installation
 
 # Installation
 

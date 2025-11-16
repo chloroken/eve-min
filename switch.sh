@@ -18,7 +18,7 @@ if [[ "$flags" == r* ]]; then
 	# Clean up existing client files
 	rm "$clientdata"
 
-	# Store client IDs of active & blocked characters
+	# Store client IDs of active characters
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
 		if [[ "$(kdotool search --name "$line")" ]]; then
 			echo "$line" >> "$clientdata"

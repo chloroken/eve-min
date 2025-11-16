@@ -1,4 +1,4 @@
-# EVE-min - a flexible EVE client switcher for KDE Plasma
+# EVE-min - a flexible EVE client switcher
 
 A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows with dbus commands via KWin scripts. **EVE-min** can also perform blanket actions like killing or minimizing all EVE clients. This tool is congruent with EVE's ToS because no actions touch the client.
 
@@ -48,8 +48,9 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 
 # Dependencies
 
-- [Kwin Compositor](https://github.com/KDE/kwin) *(comes with the [KDE Plasma Desktop Environment](https://kde.org/plasma-desktop/))*
-- The `curl` and `git` packages *(you already have these)*
+- The [KDE Plasma Desktop Environment](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
+- The [kdotool](https://github.com/jinliu/kdotool) package for window identification *(installation instructions below)*
+- The `curl` and `git` packages for ease of installation *(these are already installed)*
 
 # Installation
 

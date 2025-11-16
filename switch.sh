@@ -3,10 +3,8 @@
 # Set up directory variables
 dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 clientlist="$dir/characters.txt"
-blocklist="$dir/blocklist.txt"
 data="$dir/data"
 clientdata="$data/clients.txt"
-blockdata="$data/blocks.txt"
 cycledata="$data/cycle.txt"
 
 # Initialize magic variables
@@ -18,14 +16,14 @@ evesteamid="steam_app_8500" #
 if [[ "$flags" == r* ]]; then
 
 	# Clean up existing client files
-	rm "$clientdata" "$blockdata"
+	rm "$clientdata"
 
 	# Store client IDs of active & blocked characters
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
-		kdotool search --name "$line" >> "$clientdata"
-	done
-	cat "$blocklist" | while read -r line || [ -n "$line" ]; do
-		kdotool search --name "$line" >> "$blockdata"
+		if [[ "$(kdotool search --name "$line")" ]]; then
+			echo "$line" >> "$clientdata"
+			echo "$line"
+		fi
 	done
 
 	# If this was just a refresh (e.g., "r", not "rf"), stop now
@@ -70,13 +68,13 @@ if [ "$flags" == f ]; then
 
 	# Get target window based on cycle
 	currentcycle=$(cat "$cycledata")
-	target="${clients["$currentcycle"]}"
 	
 	# Increment cycle counter
 	((currentcycle++))
 	if [ "$currentcycle" -ge "$clientcount" ]; then
 		((currentcycle=0));
 	fi
+	target="${clients["$currentcycle"]}"
 	
 	# Save new cycle
 	echo "$currentcycle" > "$cycledata"
@@ -86,13 +84,13 @@ elif [ "$flags" == b ]; then
 
 	# Get target window based on cycle
 	currentcycle=$(cat "$cycledata")
-	target="${clients["$currentcycle"]}"
-	
 	# Increment cycle counter
 	((currentcycle--))
 	if [ "$currentcycle" -lt 0 ]; then
 		((currentcycle="$clientcount"-1));
 	fi
+	target="${clients["$currentcycle"]}"
+	
 	
 	# Save new cycle
 	echo "$currentcycle" > "$cycledata"
@@ -107,41 +105,9 @@ else
 	target="${clients["$flags-1"]}"
 fi
 
-# Activate target client to bring it forward
-kdotool windowstate --remove BELOW "$target"
-kdotool windowstate --add ABOVE "$target"
-kdotool windowactivate "$target"
-
-# Switch (with blocks)
-if [ -s "$blockdata" ]; then
-	mapfile -t blocks < "$blockdata"
-	for client in $(kdotool search --classname "$evesteamid")
-	do
-		# Look through blocklist
-		for block in "${blocks[@]}"
-		do
-			# Minimize clients that aren't blocked or targeted
-			if [ "$client" != "$block" ]; then
-				if [ "$client" != "$target" ]; then
-					kdotool windowstate --add BELOW "$client"
-					kdotool windowminimize "$client"
-				fi
-			fi
-		done
-	done
-
-# Switch (without blocks)
-else
-	for client in $(kdotool search --classname "$evesteamid")
-	do
-		# Minimize clients that aren't targeted
-		if [ "$client" != "$target" ]; then
-			kdotool windowstate --add BELOW "$client"
-			kdotool windowminimize "$client"
-		fi
-	done
-fi
-
-# Activate target client again to "ready" mouse
-kdotool windowactivate "$target"
-kdotool windowstate --remove ABOVE "$target"
+# Use kwin to access dbus for fastest switching
+script=$(mktemp)
+sed "s/\$TARGET/$target/" $(dirname $0)/switch.js > $script
+script_id=$(qdbus org.kde.KWin /Scripting loadScript $script)
+qdbus org.kde.KWin /Scripting/Script$script_id run
+qdbus org.kde.KWin /Scripting/Script$script_id stop

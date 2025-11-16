@@ -22,7 +22,6 @@ if [[ "$flags" == r* ]]; then
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
 		if [[ "$(kdotool search --name "$line")" ]]; then
 			echo "$line" >> "$clientdata"
-			echo "$line"
 		fi
 	done
 
@@ -39,6 +38,7 @@ fi
 # Blanket commands ("m") ("k")
 if [[ "$flags" == m || "$flags" == k ]]; then
 
+	# Use kdotool to find EVE clients
 	for client in $(kdotool search --classname "$evesteamid")
 	do
 	

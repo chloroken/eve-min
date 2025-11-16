@@ -10,7 +10,7 @@ cycledata="$data/cycle.txt"
 # Initialize magic variables
 flags="$1"
 arglen=${#1}
-evesteamid="steam_app_8500" #
+evesteamid="steam_app_8500" #steam_app_default (for lutris)
 
 # Refresh active client list ("r")
 if [[ "$flags" == r* ]]; then
@@ -36,20 +36,20 @@ if [[ "$flags" == r* ]]; then
 	fi
 fi
 
-# Minimize all clients ("m")
-if [ "$flags" == m ]; then
-	for client in $(kdotool search --classname "$evesteamid")
-	do
-		kdotool windowminimize "$client"
-	done
-	exit
-fi
+# Blanket commands ("m") ("k")
+if [[ "$flags" == m || "$flags" == k ]]; then
 
-# Kill all clients ("k")
-if [ "$flags" == k ]; then
 	for client in $(kdotool search --classname "$evesteamid")
 	do
-		pkill "exefile.exe"
+	
+		# Minimize all clients
+		if [ "$flags" == m ]; then
+			kdotool windowminimize "$client"
+
+		# Kill all clients
+		elif [ "$flags" == k ]; then
+			pkill "exefile.exe"
+		fi
 	done
 	exit
 fi
@@ -57,55 +57,54 @@ fi
 # Ensure client file exists before continuing
 if [ ! -f "$clientdata" ]; then
     exit
-fi
 
 # Map client data to a temporary array
-mapfile -t clients < "$clientdata"
-clientcount="${#clients[@]}"
+else
+	mapfile -t clients < "$clientdata"
+	clientcount="${#clients[@]}"
+fi
 
-# Forward cycle target selection ("f")
-if [ "$flags" == f ]; then
+# Forward/backward cycling ("f") ("b")
+if [[ "$flags" == f || "$flags" == b ]]; then
 
-	# Get target window based on cycle
+	# Read current cycle from disk
 	currentcycle=$(cat "$cycledata")
 	
-	# Increment cycle counter
-	((currentcycle++))
-	if [ "$currentcycle" -ge "$clientcount" ]; then
-		((currentcycle=0));
+	# Cycle forward
+	if [ "$flags" == f ]; then
+
+		((currentcycle++))
+		if [ "$currentcycle" -ge "$clientcount" ]; then
+			((currentcycle=0));
+		fi
+
+	# Cycle backward
+	elif [ "$flags" == b ]; then
+		((currentcycle--))
+		if [ "$currentcycle" -lt 0 ]; then
+			((currentcycle="$clientcount"-1));
+		fi
 	fi
+
+	# Set target to current cycle
 	target="${clients["$currentcycle"]}"
 	
-	# Save new cycle
-	echo "$currentcycle" > "$cycledata"
-
-# Backward cycle target selection ("b")
-elif [ "$flags" == b ]; then
-
-	# Get target window based on cycle
-	currentcycle=$(cat "$cycledata")
-	# Increment cycle counter
-	((currentcycle--))
-	if [ "$currentcycle" -lt 0 ]; then
-		((currentcycle="$clientcount"-1));
-	fi
-	target="${clients["$currentcycle"]}"
-	
-	
-	# Save new cycle
+	# Save new cycle to disk
 	echo "$currentcycle" > "$cycledata"
 	
-# Specific index target selection ("#")
+# Specific index target selection ("1") ("2")..
 else
 
 	# Prevent out-of-bounds selection
 	if [ "$flags" -gt "$clientcount" ]; then
 		exit
 	fi
+
+	# Set target to specified position
 	target="${clients["$flags-1"]}"
 fi
 
-# Use kwin to access dbus for fastest switching
+# Use kwin to access dbus for speed
 script=$(mktemp)
 sed "s/\$TARGET/$target/" $(dirname $0)/switch.js > $script
 script_id=$(qdbus org.kde.KWin /Scripting loadScript $script)

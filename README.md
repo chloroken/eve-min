@@ -118,3 +118,4 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 7) ~~Add `"k"` flag to kill all clients~~
 8) ~~Refactor using dbus for speed~~
 9) ~~Fix cycling issues~~
+10) Have target switchds adjust cycle index

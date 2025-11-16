@@ -1,4 +1,4 @@
-# EVE-min - a flexible EVE client switcher
+# EVE-min - a flexible Linux EVE client switcher
 
 A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows with dbus commands via KWin scripts. **EVE-min** can also perform blanket actions like killing or minimizing all EVE clients. This tool is congruent with EVE's ToS because no actions touch the client.
 
@@ -48,9 +48,9 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 
 # Dependencies
 
-- The [KDE Plasma Desktop Environment](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
-- The [kdotool](https://github.com/jinliu/kdotool) package for window identification *(installation instructions below)*
-- The `curl` and `git` packages for ease of installation *(these are already installed)*
+- [KDE Plasma](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
+- The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(installation instructions below)*
+- The `curl` and `git` packages for ease of installation
 
 # Installation
 
@@ -65,7 +65,8 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 # Uninstallation
 
 1) Remove the entire `eve-min` directory
-2) In a terminal, run `sudo rm /usr/local/bin/kdotool`
+2) In a terminal, run:
+   - `sudo rm /usr/local/bin/kdotool`
 
 # Usage Guide
 
@@ -89,7 +90,7 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 
 ### Example shortcut ideas:
    1) One-button wonder:
-      - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
+      - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward (slow)
    2) Targeted switching with manual refreshing:
       - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active characters
       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
@@ -103,7 +104,7 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 ### Example routine:
    1) Log into EVE Online with desired characters
    2) Use any shortcut containing the `"r"` flag
-        - This "locks in" your active characters based on the order supplied in `characters.txt`
+        - This "locks in" active characters based on the order supplied in `characters.txt`
         - This is particularly useful when changing characters - keybinds will persist until a refresh
    3) Use chosen shortcuts to switch between clients
 

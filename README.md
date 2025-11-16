@@ -113,3 +113,5 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 5) ~~Allow for higher-count targeted switching (stops at 9 now)~~
 6) ~~Add `"m"` flag to minimize all clients~~
 7) ~~Add `"k"` flag to kill all clients~~
+8) ~~Refactor using dbus for speed~~
+9) ~~Fix cycling issues~~

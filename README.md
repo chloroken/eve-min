@@ -1,6 +1,6 @@
 # EVE-min - a flexible EVE client switcher
 
-A Linux, KDE Plasma-based client switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows with KWin scripts via dbus for speed. **EVE-min** can also perform blanket actions like killing or minimizing all EVE clients. This tool is congruent with EVE's ToS because no actions touch the client.
+**EVE-min** is a Linux, KDE Plasma-based client switching bash script for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows with KWin scripts via dbus for speed. **EVE-min** can also perform blanket actions like killing or minimizing all EVE clients. This tool is congruent with EVE's [Terms of Service](https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service) because no actions touch the client.
 
 # EVE's Throttling Mechanics
 

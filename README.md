@@ -36,14 +36,13 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 
    - `"r"` refreshes active clients
       - This command creates a list of currently-logged-in clients
-      - The list is used by other commands
-      - Any clients listed in `blocklist.txt` will be ignored
+      - The list is then used by other commands
    - `"f"` and `"b"` cycle forward and backward through clients
    - `"1"`, `"3"`, and `"12"` target specific clients
       - This command will look for the Nth active character
       - This uses the order listed `characters.txt`
-   - `"m"` minimizes all clients, ignoring `blocklist.txt`
-   - `"k"` kills all clients, ignoring `blocklist.txt`
+   - `"m"` minimizes all clients
+   - `"k"` kills all clients
 
 **Combination Flags**: The `"r"` flag can be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to perform both actions at once, avoiding the need for a dedicated refresh button. However, be aware that **refreshing slows down switches**. Unless performance doesn't matter to you, use combination flags sparingly.
 
@@ -56,10 +55,10 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 
 1) Install `kdotool` with this console command (one line):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-2) Download the **EVE-min** repository with this console command:
+2) Download the **EVE-min** repository to Documents with this command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
-4) Use a text editor to open `~/Documents/eve-min/characters.txt` and add your characters
-   - The order is important. When refreshing "active characters", this order is used.
+4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
+   - The order is important. When refreshing "active characters", this order is used
 5) Proceed to the **Usage Guide** section below
 
 # Uninstallation

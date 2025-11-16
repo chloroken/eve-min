@@ -59,6 +59,7 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 2) Download the **EVE-min** repository with this console command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
 4) Use a text editor to open `~/Documents/eve-min/characters.txt` and add your characters
+   - The order is important. When refreshing "active characters", this order is used.
 5) Proceed to the **Usage Guide** section below
 
 # Uninstallation

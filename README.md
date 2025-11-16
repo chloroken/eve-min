@@ -1,4 +1,4 @@
-# EVE-min - a client switcher for EVE + KDE Plasma
+# EVE-min - a flexible EVE client switcher for KDE Plasma
 
 A client switcher for [EVE Online](https://www.eveonline.com/) designed to fully utilize EVE's throttling mechanics by minimizing inactive client windows with dbus commands via KWin scripts. **EVE-min** can also perform blanket actions like killing or minimizing all EVE clients. This tool is congruent with EVE's ToS because no actions touch the client.
 
@@ -98,12 +98,14 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
    3) Quick cycler with "main" button that also refreshes:
       - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
       - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
-      - `bash -c '~/Documents/eve-min/switch.sh "r1"'` switches to first char & refreshes clients
+      - `bash -c '~/Documents/eve-min/switch.sh "rm"'` switches to first char & minimizes all clients
 
 ### Example routine:
-   1) Log into your EVE Online characters
-   2) Use any shortcut with the `"r"` flag
-   3) Use your keybinds to switch between clients
+   1) Log into EVE Online with desired characters
+   2) Use any shortcut containing the `"r"` flag
+        - This "locks in" your active characters based on the order supplied in `characters.txt`
+        - This is particularly useful when changing characters - keybinds will persist until a refresh
+   3) Use chosen shortcuts to switch between clients
 
 # To Do
 

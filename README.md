@@ -1,6 +1,10 @@
-# EVE-min - a dynamic EVE client switcher
+# EVE-min - a flexible EVE client switcher
 
-Built for Linux's KDE Plasma desktop environment, **EVE-min** is a lightweight client-switcher designed to fully utilize [EVE Online's](https://www.eveonline.com/) throttling mechanics by minimizing inactive client windows via KWin scripting, utilizing dbus for speed and responsiveness. This tool is dynamic and builds a client order when refreshed based on a configurable hierarchy of characters. It can also perform handy blanket actions like killing or minimizing all EVE clients, however it does not offer "thumbnail previews" like EVE-O Preview. **EVE-min** is congruent with EVE's [Terms of Service](https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service) because no actions touch the client.
+**EVE-min** is a client-switcher for [KDE Plasma](https://kde.org/plasma-desktop/) designed to fully utilize [EVE Online's](https://www.eveonline.com/) throttling mechanics. It achieves this by minimizing inactive clients after switching using [KWin scripting](https://develop.kde.org/docs/plasma/kwin/) served via dbus for speed and responsiveness.
+
+This tool may be used as a simple "one-button cycle-switcher" for as few as two characters, but it really shines for those who frequently swap between different characters on a single account. By supplying a list of character names (`characters.txt`) and invoking a refresh command (`"r"`) with a shortcut, a specific *client order* will be locked in — allowing consistent targeted switching, even if intra-client character swaps occur, and even in the login screen.
+
+This software is congruent with EVE's [Terms of Service](https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service) because it just switches windows around.
 
 # EVE's Throttling Mechanics
 

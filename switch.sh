@@ -8,9 +8,8 @@ clientdata="$data/clients.txt"
 cycledata="$data/cycle.txt"
 
 # Initialize magic variables
-flags="$1"
-arglen=${#1}
-evesteamid="steam_app_8500" #steam_app_default (for lutris)
+flags="$1" # makes code more readable
+windowclass="steam_app_8500" # use steam_app_default for lutris
 
 # Refresh active client list ("r")
 if [[ "$flags" == r* ]]; then
@@ -41,14 +40,14 @@ fi
 if [[ "$flags" == m || "$flags" == k ]]; then
 
 	# Use kdotool to find EVE clients
-	for client in $(kdotool search --classname "$evesteamid")
+	for client in $(kdotool search --classname "$windowclass")
 	do
 	
-		# Minimize all clients
+		# Minimize client
 		if [ "$flags" == m ]; then
 			kdotool windowminimize "$client"
 
-		# Kill all clients
+		# Kill client
 		elif [ "$flags" == k ]; then
 			pkill "exefile.exe"
 		fi

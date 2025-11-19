@@ -22,7 +22,9 @@ if [[ "$flags" == r* ]]; then
 
 		# Use kdotool to check if a specific client is active
 		if [[ "$(kdotool search --name "$line")" ]]; then
-			echo "$line" >> "$clientdata"
+		
+			# Lock that client in (even if logged out)
+			echo $(kdotool search --name "$line") >> "$clientdata"
 		fi
 	done
 

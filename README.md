@@ -22,17 +22,21 @@ On the other hand, minimizing a client will trigger both layers of throttling: "
 
 ### Demonstration (5 clients + max graphics)
 
-Without minimizing I use over 90% of the GPU while multiboxing:
+Without minimizing I use what feels like the whole GPU:
 
 <div align="center">
 
-![](https://i.imgur.com/WT68EQP.png)</div>
+![](https://i.imgur.com/WLiRVz2.png)
 
-With minimizing I use less than 30% of the GPU while multiboxing:
+*(1 active client, 4 unfocused, 0 minimized)*</div>
+
+With minimizing I use roughly a third of the GPUg:
 
 <div align="center">
    
-![](https://i.imgur.com/NxriGDH.png)</div>
+![](https://i.imgur.com/Xo6U6Tr.png)
+
+*(1 active client, 0 unfocused, 4 minimized)*</div>
 
 # How It Works
 

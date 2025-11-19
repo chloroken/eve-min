@@ -59,7 +59,7 @@ With minimizing I use less than 30% of the GPU while multiboxing:
 
 1) Install `kdotool` with this console command (one line):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-2) Download the **EVE-min** repository to Documents with this command:
+2) Download the **EVE-min** repository to `~/Documents` with this command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
 4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
    - The order is important. When refreshing "active characters", this order is used

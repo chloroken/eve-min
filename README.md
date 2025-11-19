@@ -65,7 +65,14 @@ With minimizing I use less than 30% of the GPU while multiboxing:
    - The order is important. When refreshing "active characters", this order is used
 5) Proceed to the **Usage Guide** section below
 
-# Uninstallation
+# Updating
+
+1) Back up your `characters.txt` file
+2) Remove the entire `eve-min` directory
+3) Clone the repo as in step 2 of **Installation**
+4) Add your `characters.txt` file back
+
+# Uninstallation / Updating
 
 1) Remove the entire `eve-min` directory
 2) In a terminal, run:

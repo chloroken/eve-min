@@ -23,7 +23,7 @@ if [[ "$flags" == r* ]]; then
 		# Use kdotool to check if a specific client is active
 		if [[ "$(kdotool search --name "$line")" ]]; then
 		
-			# Lock that client in (even if logged out)
+			# Save client's "kwin identifier" to clientdata
 			echo $(kdotool search --name "$line") >> "$clientdata"
 		fi
 	done
@@ -38,21 +38,18 @@ if [[ "$flags" == r* ]]; then
 	fi
 fi
 
-# Blanket commands ("m") ("k")
-if [[ "$flags" == m || "$flags" == k ]]; then
+# Kill all clients ("k")
+if [ "$flags" == k ]; then
+	pkill "exefile.exe"
+	exit
+
+# Minimize all clients ("m")
+elif [ "$flags" == m ]; then
 
 	# Use kdotool to find EVE clients
 	for client in $(kdotool search --classname "$windowclass")
 	do
-	
-		# Minimize client
-		if [ "$flags" == m ]; then
-			kdotool windowminimize "$client"
-
-		# Kill client
-		elif [ "$flags" == k ]; then
-			pkill "exefile.exe"
-		fi
+		kdotool windowminimize "$client"
 	done
 	exit
 fi
@@ -73,27 +70,30 @@ if [[ "$flags" == f || "$flags" == b ]]; then
 	# Read current cycle from disk
 	currentcycle=$(cat "$cycledata")
 	
-	# Cycle forward
+	# Increment cycle forward
 	if [ "$flags" == f ]; then
-
 		((currentcycle++))
+		
+		# Wrap cycle to start
 		if [ "$currentcycle" -ge "$clientcount" ]; then
 			((currentcycle=0));
 		fi
 
-	# Cycle backward
+	# Decrement cycle backward
 	elif [ "$flags" == b ]; then
 		((currentcycle--))
+		
+		# Wrap cycle to end
 		if [ "$currentcycle" -lt 0 ]; then
 			((currentcycle="$clientcount"-1));
 		fi
 	fi
-
-	# Set target to current cycle
-	target="${clients["$currentcycle"]}"
 	
 	# Save new cycle to disk
 	echo "$currentcycle" > "$cycledata"
+
+	# Set target to current cycle
+	target="${clients["$currentcycle"]}"
 	
 # Specific index target selection ("1") ("2")..
 else
@@ -107,9 +107,11 @@ else
 	target="${clients["$flags-1"]}"
 fi
 
-# Use kwin to access dbus for speed
+# Create a temporary kwin script
 script=$(mktemp)
 sed "s/\$TARGET/$target/" $(dirname $0)/switch.js > $script
 script_id=$(qdbus org.kde.KWin /Scripting loadScript $script)
+
+# Run script via qdbus
 qdbus org.kde.KWin /Scripting/Script$script_id run
 qdbus org.kde.KWin /Scripting/Script$script_id stop

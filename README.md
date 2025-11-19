@@ -30,7 +30,7 @@ Without minimizing I use what feels like the whole GPU:
 
 *(1 active client, 4 unfocused, 0 minimized)*</div>
 
-With minimizing I use roughly a third of the GPUg:
+With minimizing I use roughly a third of the GPU:
 
 <div align="center">
    

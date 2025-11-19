@@ -1,4 +1,4 @@
-# EVE-min - a flexible EVE client switcher
+# EVE-min - a flexible client-switcher
 
 **EVE-min** is a client-switcher for Linux's [KDE Plasma](https://kde.org/plasma-desktop/) designed to fully utilize [EVE Online's](https://www.eveonline.com/) throttling mechanics. It achieves this by minimizing inactive clients after switching using [KWin scripting](https://develop.kde.org/docs/plasma/kwin/) served via dbus for speed and responsiveness.
 

@@ -2,15 +2,11 @@
 
 **EVE-min** is an [EVE Online](https://www.eveonline.com/) client-switcher for Linux's [KDE Plasma](https://kde.org/plasma-desktop/) designed primarily those who juggle many characters across fewer accounts. By supplying a list of character names (`characters.txt`) and invoking a refresh command (`"r"`), a specific *client order* will lock in and allow consistent switching, even in the login screen.
 
-EVE-min** is built to fully utilize [EVE's throttling mechanics](#eve's-throttling-mechanics). It achieves this by minimizing inactive clients while switching.
-
-using [KWin scripting](https://develop.kde.org/docs/plasma/kwin/) served via qdbus for speed and responsiveness.
-
-
+**EVE-min** is built to fully utilize [EVE's throttling mechanics](#eve-online-throttling-mechanics). It achieves this by minimizing inactive clients while switching. Because speed and responsiveness are important when multiboxing, this script uses [KWin scripts](https://develop.kde.org/docs/plasma/kwin/) served over qdbus to actually manipulate the windows.
 
 This software is congruent with EVE's [Terms of Service](https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service) because no client is given any in-game actions.
 
-# EVE's Throttling Mechanics
+# EVE Online Throttling Mechanics
 
 ### Out of Focus vs. Hidden
 Many players believe that if an EVE client's window is out of focus or in another virtual desktop/workspace, that window will be throttled for performance purposes. But if a window is out of focus but **not minimized**, it will only be partially throttled.

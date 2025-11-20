@@ -63,10 +63,12 @@ With minimizing I use less than half of the GPU:
 
 1) Install `kdotool` with this console command (one line):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
+   - Explanation: Downloads the kdotool archive and, with your permission, unzips it into local binaries (so other programs can use it, like EVE-min)
 2) Download the **EVE-min** repository to `~/Documents` with this command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
+   - Explanation: Copies all the files shown here on this page to a convenient location
 4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
-   - The order is important. When refreshing "active characters", this order is used
+   - Explanation: When refreshing "active characters", this order is used, so grouping characters by client is a natural way to leverage this tool
 5) Proceed to the **Usage Guide** section below
 
 # Updating
@@ -76,10 +78,10 @@ With minimizing I use less than half of the GPU:
 3) Clone the repo as in step 2 of **Installation**
 4) Add your `characters.txt` file back
 
-# Uninstallation / Updating
+# Uninstall
 
 1) Remove the entire `eve-min` directory
-2) In a terminal, run:
+2) To remove kdotool, in a terminal run:
    - `sudo rm /usr/local/bin/kdotool`
 
 # Usage Guide
@@ -103,17 +105,19 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 </div>
 
 ### Example shortcut ideas:
-   1) One-button wonder:
+   1) One-button wonder (bind to capslock key):
       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward (slow)
-   2) Targeted switching with manual refreshing:
-      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active characters
+   2) Targeted switching (bind to F1-F8):
+      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...
       - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
-   3) Quick cycler with "main" button that also refreshes:
+      - `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
+
+   3) Quick cycler (bind to mouse side buttons):
       - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
       - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
-      - `bash -c '~/Documents/eve-min/switch.sh "rm"'` switches to first char & minimizes all clients
+      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
 
 ### Example routine:
    1) Log into EVE Online with desired characters
@@ -133,4 +137,4 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 7) ~~Add `"k"` flag to kill all clients~~
 8) ~~Refactor using dbus for speed~~
 9) ~~Fix cycling issues~~
-10) Have target switchds adjust cycle index
+10) Have target switches adjust cycle index

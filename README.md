@@ -57,19 +57,23 @@ With minimizing I use less than half of the GPU:
 # Dependencies
 
 - [KDE Plasma](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
+- The [qt5-tools](https://archlinux.org/packages/extra/x86_64/qt5-tools/) package for dbus access.
 - The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(installation instructions below)*
 
 # Installation
 
-1) Install `kdotool` with this console command (one line):
+1) Install `qt5-tools` with this console command:
+   - `sudo pacman -S qt5-tools`
+   - Explanation: Installs qt tools needed for qdbus access.
+3) Install `kdotool` with this console command (one line):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
    - Explanation: Downloads the kdotool archive and, with your permission, unzips it into local binaries (so other programs can use it, like EVE-min)
-2) Download the **EVE-min** repository to `~/Documents` with this command:
+4) Download the **EVE-min** repository to `~/Documents` with this command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
    - Explanation: Copies all the files shown here on this page to a convenient location
-4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
+5) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
    - Explanation: When refreshing "active characters", this order is used, so grouping characters by client is a natural way to leverage this tool
-5) Proceed to the **Usage Guide** section below
+6) Proceed to the **Usage Guide** section below
 
 # Updating
 

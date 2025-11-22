@@ -1,6 +1,6 @@
-# EVE-min - a flexible client-switcher
+# EVE-min - a performance-minded client switcher for KDE Plasma
 
-**EVE-min** is an [EVE Online](https://www.eveonline.com/) client-switcher for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/) designed primarily those who juggle many characters across fewer accounts. By supplying a list of characters and refreshing, a specific *client order* will lock in and allow for consistent hotkeys — even in the login screen between switches. However, it can also act as a simple cycler for less complicated multiboxing setups.
+**EVE-min** is a client switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/), designed primarily multiboxeres who juggle many characters across fewer accounts. By supplying a list of characters and refreshing, a specific *client order* will lock in and allow for consistent hotkeys — even in the login screen between switches. However, it can also act as a simple cycler for less complicated multiboxing setups.
 
 **EVE-min** is built to fully utilize [EVE's throttling mechanics](#eve-online-throttling-mechanics). It achieves this by minimizing inactive clients while switching. Because speed and responsiveness are important when multiboxing, this script uses [KWin scripts](https://develop.kde.org/docs/plasma/kwin/) served over qdbus to actually manipulate the windows.
 
@@ -57,23 +57,20 @@ With minimizing I use less than half of the GPU:
 # Dependencies
 
 - [KDE Plasma](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
-- The [qt5-tools](https://archlinux.org/packages/extra/x86_64/qt5-tools/) package for dbus access.
-- The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(installation instructions below)*
+- The [qt5-tools](https://archlinux.org/packages/extra/x86_64/qt5-tools/) package for `qdbus` *(comes with KDE Plasma)*
+- The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(easy installation instructions below)*
 
 # Installation
 
-1) Install `qt5-tools` with this console command:
-   - `sudo pacman -S qt5-tools`
-   - Explanation: Installs qt tools needed for qdbus access.
-3) Install `kdotool` with this console command (one line):
+1) Install `kdotool` with this console command (one line):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
    - Explanation: Downloads the kdotool archive and, with your permission, unzips it into local binaries (so other programs can use it, like EVE-min)
-4) Download the **EVE-min** repository to `~/Documents` with this command:
+2) Download the **EVE-min** repository to `~/Documents` with this command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
    - Explanation: Copies all the files shown here on this page to a convenient location
-5) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
+3) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
    - Explanation: When refreshing "active characters", this order is used, so grouping characters by client is a natural way to leverage this tool
-6) Proceed to the **Usage Guide** section below
+4) Proceed to the **Usage Guide** section below
 
 # Updating
 

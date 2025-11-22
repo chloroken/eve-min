@@ -1,6 +1,6 @@
-# EVE-min - a performance-minded client switcher for KDE Plasma
+# EVE-min - a performance-minded client switcher
 
-**EVE-min** is a client switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/), designed primarily multiboxeres who juggle many characters across fewer accounts. By supplying a list of characters and refreshing, a specific *client order* will lock in and allow for consistent hotkeys — even in the login screen between switches. However, it can also act as a simple cycler for less complicated multiboxing setups.
+**EVE-min** is a client switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/), designed primarily for multiboxers who juggle many characters across fewer accounts. By supplying a list of characters and refreshing, a specific *client order* will lock in and allow for consistent hotkeys — even in the login screen between switches. However, it can also act as a simple cycler for less complicated multiboxing setups.
 
 **EVE-min** is built to fully utilize [EVE's throttling mechanics](#eve-online-throttling-mechanics). It achieves this by minimizing inactive clients while switching. Because speed and responsiveness are important when multiboxing, this script uses [KWin scripts](https://develop.kde.org/docs/plasma/kwin/) served over qdbus to actually manipulate the windows.
 

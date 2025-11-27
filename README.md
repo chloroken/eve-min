@@ -67,11 +67,11 @@ With minimizing I use less than half of the GPU:
    - Explanation: This package unlocks the `qdbus` command we need
 2) Install `kdotool` with this console command (one-liner):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-   - Explanation: Downloads the kdotool archive and, with your permission, unzips it into local binaries (so other programs can use it, like EVE-min)
+   - Explanation: Downloads kdotool and, with your permission, unzips it into local binaries (so other programs can use it)
 3) Download (clone) the **EVE-min** repository to `~/Documents` with this command:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/`
 4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
-   - Explanation: When refreshing "active characters", this order is used, so grouping characters by client is a natural way to leverage this tool
+   - Explanation: When refreshing "active characters" this order is used, so grouping characters by client is typical
 5) Proceed to the **Usage Guide** section below
 
 # Updating

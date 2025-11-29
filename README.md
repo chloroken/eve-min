@@ -4,7 +4,7 @@
 
 ### DYNAMIC HOTKEYS
 
-The trick to understanding [how this script works](#how-it-works) is to realize that it's dynamic. When refreshed, this script forms a "lineup" of your currently-logged-in characters and adjusts which hotkeys activate those characters on the fly based on your desired order. Depending on which characteres are logged in a character's hotkey could change — which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change from day to day.
+The trick to understanding [how this script works](#how-it-works) is to realize that its targeting switching is dynamic. When refreshed, this script forms a "lineup" of your currently-logged-in characters and adjusts which hotkeys activate those characters on the fly based on your desired order. Depending on which characteres are logged in a character's hotkey could change — which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change from day to day.
 
 ### PERFORMANT SWITCHING
 

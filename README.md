@@ -2,15 +2,11 @@
 
 **EVE-min** is a client switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/), designed primarily for multiboxers who juggle many characters across fewer accounts. However, it can also act as a simple 'cycle switcher' for less-complicated multiboxing setups. It does not have thumbnail previews.
 
-<div align="center">
-DYNAMIC HOTKEYS
-</div>
+### DYNAMIC HOTKEYS
 
 The trick to understanding [how this script works](#how-it-works) is to realize that it's dynamic. When refreshed, this script forms a "lineup" of your currently-logged-in characters and adjusts which hotkeys activate those characters on the fly based on the ordered list. Depending on which characteres are logged in, a character's hotkey might change, which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change from day to day.
 
-<div align="center">
-PERFORMANT SWITCHING
-</div>
+### PERFORMANT SWITCHING
 
 Another focus of this tool is to fully utilize [EVE's throttling mechanics](#eve-online-throttling-mechanics). It achieves this by seamlessly minimizing inactive clients while switching. Because speed and responsiveness are important when multiboxing, this script uses [KWin scripts](https://develop.kde.org/docs/plasma/kwin/) served over qdbus to actually manipulate the windows.
 

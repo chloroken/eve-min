@@ -1,6 +1,6 @@
 # EVE-min - a dynamic, performant client switcher
 
-**EVE-min** is a client switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/), designed primarily for multiboxers who juggle many characters across fewer accounts. However, it can also act as a simple 'cycle switcher' for less-complicated multiboxing setups. It does not have thumbnail previews.
+**EVE-min** is a client switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/) designed primarily for multiboxers who juggle many characters across fewer accounts. However, it can also act as a simple 'cycle switcher' for less-complicated multiboxing setups. It does not generate thumbnail previews.
 
 ### DYNAMIC HOTKEYS
 

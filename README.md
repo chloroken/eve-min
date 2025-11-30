@@ -74,11 +74,14 @@ With minimizing I use less than half of the GPU:
 2) Install `kdotool` with this console command (one-liner):
    - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
    - Explanation: Downloads kdotool and, with your permission, unzips it into local binaries (so other programs can use it)
-3) Download (clone) the **EVE-min** repository to `~/Documents` with this command:
-   - `git clone https://github.com/chloroken/eve-min ~/Documents/`
-4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
+3) Download the **EVE-min** repository to `~/Documents` with these commands:
+   - `mkdir ~/Documents/eve-min`
+   - `git clone https://github.com/chloroken/eve-min ~/Documents/eve-min`
+4) Grant executable permission to the script with this command:
+   - `sudo chmod a+x ~/Documents/eve-min/switch.sh`
+5) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
    - Explanation: When refreshing "active characters" this order is used, so grouping characters by client is typical
-5) Proceed to the **Usage Guide** section below
+6) Proceed to the **Usage Guide** section below
 
 # Updating
 

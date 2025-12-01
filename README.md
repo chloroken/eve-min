@@ -4,7 +4,9 @@
 
 ### DYNAMIC HOTKEYS
 
-The trick to understanding [how this script works](#how-it-works) is to realize that its targeting switching is dynamic. When refreshed, this script forms a "lineup" of your currently-logged-in characters and adjusts which hotkeys activate those characters on the fly based on your desired order. Depending on which characteres are logged in a character's hotkey could change — which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change from day to day.
+The trick to understanding [how this script works](#how-it-works) is to recognize that its targeting switching is dynamic. Instead of hard coding a key to a client, **EVE-min** looks at which clients are logged in and switches clients based on the character order you provided it.
+
+In praxtice, depending on which characters are logged in, a character's hotkey could change — which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change on the fly both in roster size and individual lineup.
 
 ### PERFORMANT SWITCHING
 
@@ -87,8 +89,8 @@ With minimizing I use less than half of the GPU:
 
 1) Back up your `characters.txt` file
 2) Remove the entire `eve-min` directory
-3) Clone the repo as in step 2 of **Installation**
-4) Add your `characters.txt` file back
+3) Continue from [step 3](#installation) above
+4) Replace the new `characters.txt`with your backup
 
 # Uninstall
 
@@ -117,13 +119,13 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 </div>
 
 ### Example shortcut ideas:
-   1) One-button wonder (bind to capslock key):
+   1) One-button wonder (like alt-tabbing):
       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward (slow)
-   2) Targeted switching (bind to F1-F8):
-      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
+   2) Targeted switching (bind to F1-F5 keys):
       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...
       - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
+      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
       - `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
 
    3) Quick cycler (bind to mouse side buttons):

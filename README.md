@@ -83,8 +83,8 @@ With minimizing I use less than half of the GPU:
    - `sudo chmod a+x ~/Documents/eve-min/switch.sh`
 5) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
    - Explanation: When refreshing "active characters" this order is used, so grouping characters by client is typical
-6) Proceed to the **Usage Guide** section below
-
+6) If using Lutris instead of Steam, edit line 12 of `switch.sh` as commented
+7) Proceed to the **Usage Guide** section below
 # Updating
 
 1) Back up your `characters.txt` file

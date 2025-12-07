@@ -107,11 +107,14 @@ else
 	target="${clients["$flags-1"]}"
 fi
 
-# Create a temporary kwin script
+# Create a temporary kwin script & load it into qdbus
 script=$(mktemp)
 sed "s/\$TARGET/$target/" $(dirname $0)/switch.js > $script
 script_id=$(qdbus org.kde.KWin /Scripting loadScript $script)
 
-# Run script via qdbus
+# Run script
 qdbus org.kde.KWin /Scripting/Script$script_id run
 qdbus org.kde.KWin /Scripting/Script$script_id stop
+
+# Clean up temp script
+rm $script

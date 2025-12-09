@@ -4,7 +4,7 @@
 
 ### DYNAMIC HOTKEYS
 
-The trick to understanding [how this script works](#how-it-works) is to recognize that its targeting switching is dynamic. Instead of hard coding a key to a client, **EVE-min** looks at which clients are logged in and switches relative to the character order you provided it.
+The trick to understanding [how this script works](#how-it-works) is to recognize that its targeted switching is dynamic. Instead of hard coding a key to a client, **EVE-min** looks at which clients are logged in and switches relative to the character order you provided it.
 
 In practice, depending on which characters are logged in, a character's hotkey could change — which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change on the fly both in roster size and individual lineup.
 

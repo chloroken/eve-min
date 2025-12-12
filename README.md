@@ -6,7 +6,7 @@
 
 Unlike conventional client-switchers, targeted hotkeys in **EVE-min** change based on which characters are logged in. In essence, targeted hotkeys choose the "Nth *Active* Character", not the Nth character.
 
-For example, if you have four characters: A, B, C, and D, you could use F1, F2, F3, and F4 to switch between them. BUT, if you log out of character C and refresh the script, you'd be using F1, F2, and F3 instead of F1, F2, and F4. In this example, F3 targets the third *active* character, not the third character in the list.
+For example, if you have four characters: A, B, C, and D, you could use F1, F2, F3, and F4 to switch between them. BUT, if you log out of character C and refresh the script, you'd be using F1, F2, and F3 instead of F1, F2, and F4 to switch between A, B, and D. In this example, F3 targets the third *active* character, which is now D, not the third character in the list, which is C.
 
 The purpose of hotkeys adjusting automatically is for the hotkeys to remain tight (no huge gaps like F1 --> F7 with only two characters logged in), regardless of character selection or count.
 

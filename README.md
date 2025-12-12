@@ -2,9 +2,9 @@
 
 **EVE-min** is a client-switcher for [EVE Online](https://www.eveonline.com/) built for Linux's [CachyOS](https://cachyos.org/) & [KDE Plasma](https://kde.org/plasma-desktop/) designed primarily for multiboxers who juggle many characters across fewer accounts. However, it can also act as a simple 'cycle-switcher' for less-complicated multiboxing setups. It does not generate thumbnail previews.
 
-### DYNAMIC HOTKEYS
+### DYNAMIC TARGETED HOTKEYS
 
-Unlike conventional client-switchers, targeted hotkeys in **EVE-min** can change based on which characters are logged in. In essence, targeted hotkeys choose the "Nth Active Character".
+Unlike conventional client-switchers, targeted hotkeys in **EVE-min** change based on which characters are logged in. In essence, targeted hotkeys choose the "Nth *Active* Character", not the Nth character.
 
 For example, if you have four characters: A, B, C, and D, you could use F1, F2, F3, and F4 to switch between them. BUT, if you log out of character C and refresh the script, you'd be using F1, F2, and F3 instead of F1, F2, and F4. In this example, F3 targets the third *active* character, not the third character in the list.
 

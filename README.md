@@ -4,9 +4,7 @@
 
 ### DYNAMIC HOTKEYS
 
-The trick to understanding [how this script works](#how-it-works) is to recognize that its targeted switching is dynamic. Instead of hard coding a key to a client, **EVE-min** looks at which clients are logged in and switches relative to the character order you provided it.
-
-In practice, depending on which characters are logged in, a character's hotkey could change — which seems bizarre but is actually super useful for forming squadrons of commonly-played-together characters that might change on the fly both in roster size and individual lineup.
+The trick to understanding [how this script works](#how-it-works) is to recognize that hotkeys can change based on which characters are logged in. For example, if you have four characters: A, B, C, and D, you could use F1, F2, F3, and F4 to switch between them. BUT, if you log out of character C and refresh the script, you'd be using F1, F2, and F3 instead of F1, F2, and F4. This allows hotkeys to adjust automatically and remain tight (no huge gaps like F1 --> F7 with only two characters logged in), regardless of character selection or count.
 
 ### PERFORMANT SWITCHING
 

@@ -10,7 +10,7 @@ Unlike conventional client-switchers, targeted hotkeys in **EVE-min** don't swit
 
 ### PERFORMANCE BOOST
 
-Another focus of this tool is to fully utilize [EVE's throttling mechanics](#eve-online-throttling-mechanics). It achieves this by seamlessly minimizing inactive clients while switching.
+Another focus of this tool is to fully utilize [EVE's throttling mechanics](#eve-online-throttling-mechanics). It achieves this by seamlessly minimizing inactive clients while switching. This offers a dramatic boost in performance, but also eliminates the ability to generate thumbnail previews. Since I don't use previews anyway, this is not a sacrifice.
 
 ### PERFORMANT SWITCHING
 

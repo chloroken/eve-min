@@ -6,7 +6,7 @@ This software is congruent with EVE's [Terms of Service](https://support.eveonli
 
 ### DYNAMIC HOTKEYS
 
-Unlike conventional client-switchers, targeted hotkeys in **EVE-min** switch between active clients and are not hard-coded to specific characters or clients. The purpose of this automatic adjustment is for hotkeys to remain tight (no huge gaps like F1 --> F7 with only two characters logged in), regardless of character selection or count.
+Unlike conventional client-switchers, targeted hotkeys in **EVE-min** don't switch between characters. Instead, they switch between active clients based on your chosen character order. The purpose of this is for hotkeys to remain tight regardless of character selection or count.
 
 ### PERFORMANCE BOOST
 

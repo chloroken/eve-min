@@ -119,7 +119,8 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 
 ### Example shortcut ideas:
    1) One-button wonder (like alt-tabbing):
-      - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward (slow)
+      - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
+      - NOTE: Including "r" in a command like this makes switching slower. Only use this for basic stuff.
    2) Targeted switching (bind to F1-F5 keys):
       - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
       - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...

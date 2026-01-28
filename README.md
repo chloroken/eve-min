@@ -4,7 +4,7 @@
 
 This software is congruent with EVE's [Terms of Service](https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service) because nothing here touches anything in game.
 
-### DYNAMIC TARGETED HOTKEYS
+### DYNAMIC HOTKEYS
 
 Unlike conventional client-switchers, targeted hotkeys in **EVE-min** switch between active clients and are not hard-coded to specific characters or clients. The purpose of this automatic adjustment is for hotkeys to remain tight (no huge gaps like F1 --> F7 with only two characters logged in), regardless of character selection or count.
 

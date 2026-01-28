@@ -152,3 +152,5 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 8) ~~Refactor using dbus for speed~~
 9) ~~Fix cycling issues~~
 10) Have target switches adjust cycle index
+11) Remove kdotool as a depedency altogether
+12) Make dbus interaction distro agnostic

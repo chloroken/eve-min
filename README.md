@@ -29,21 +29,25 @@ Without minimizing I use what feels like the whole GPU:
 
 <div align="center">
    
+*(1 active client, 4 unfocused, 0 minimized)*
+   
 ![](https://i.imgur.com/WLiRVz2.png)
    
 ![](https://i.imgur.com/DNjdWlJ.png)
 
-*(1 active client, 4 unfocused, 0 minimized)*</div>
+</div>
 
 With minimizing I use less than half of the GPU:
 
 <div align="center">
    
+*(1 active client, 0 unfocused, 4 minimized)*
+   
 ![](https://i.imgur.com/Xo6U6Tr.png)
    
 ![](https://i.imgur.com/RL25rqR.png)
 
-*(1 active client, 0 unfocused, 4 minimized)*</div>
+</div>
 
 # How It Works
 

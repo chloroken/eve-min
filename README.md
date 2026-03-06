@@ -103,8 +103,8 @@ With minimizing I use less than half of the GPU:
 
 In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scripts with the following format:
    - `bash -c '~/Documents/eve-min/switch.sh "<flag>"'`
-   - Replace `<flag>` with the desired flag
-
+   - Replace `<flag>` with the desired flag from the How It Works section above
+   - 
 <div align="center">
    
 *Adding a new shortcut:*

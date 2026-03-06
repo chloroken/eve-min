@@ -65,22 +65,20 @@ With minimizing I use less than half of the GPU:
 
 - [KDE Plasma](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
 - The [qt5-tools](https://archlinux.org/packages/extra/x86_64/qt5-tools/) package for `qdbus` *(comes with KDE Plasma)*
+   - Install command: `sudo pacman -S qt5-tools`
 - The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(easy installation instructions below)*
+   - One-line install command: `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
 
 # Installation
-
-1) Install `qt5-tools` with this command (if not already installed):
-   - `sudo pacman -S qt5-tools`
-2) Install `kdotool` with this console command (one-liner):
-   - `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
-3) Download the **EVE-min** repository to `~/Documents` with these commands:
+1) Install dependencies from above (qt5tools, kdotool)
+2) Download the **EVE-min** repository to `~/Documents` with these commands:
    - `mkdir ~/Documents/eve-min`
    - `git clone https://github.com/chloroken/eve-min ~/Documents/eve-min`
-4) Grant executable permission to the script with this command:
+3) Grant executable permission to the script with this command:
    - `sudo chmod a+x ~/Documents/eve-min/switch.sh`
-5) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
-6) If using Lutris instead of Steam, edit line 12 of `switch.sh` as commented
-7) Proceed to the **Usage Guide** section below
+4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
+5) If using Lutris instead of Steam, edit line 12 of `switch.sh` as commented
+6) Proceed to the **Usage Guide** section below
 # Updating
 
 1) Back up your `characters.txt` file
@@ -91,8 +89,9 @@ With minimizing I use less than half of the GPU:
 # Uninstall
 
 1) Remove the entire `eve-min` directory
-2) To remove kdotool, in a terminal run:
+2) To remove `kdotool`, in a terminal run:
    - `sudo rm /usr/local/bin/kdotool`
+3) Leave `qt5-tools` unless you know you don't need it
 
 # Usage Guide
 

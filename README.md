@@ -118,20 +118,20 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 </div>
 
 ### Example shortcut ideas:
-   1) One-button wonder (like alt-tabbing):
+   1) One-button wonder:
       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
-      - NOTE: Including "r" in a command like this makes switching slower. Only use this for basic stuff.
-   2) Targeted switching (bind to F1-F5 keys):
-      - `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to the first logged-in client
-      - `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to the second logged-in...
-      - `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to the third...
-      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
-      - `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
-
-   3) Quick cycler (bind to mouse side buttons):
-      - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
-      - `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
-      - `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
+      - NOTE: Combining "r" with another flag **makes switching slower**. Other setups are more ideal.
+   2) Targeted switching (my setup):
+      - F1: `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to first client
+      - F2: `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to second client
+      - F3: `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to third client
+      - F4: `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to fourth client
+      - F5: `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
+      - F6: `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
+   3) Quick cycler:
+      - Mouse Forward: `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
+      - Mouse Back: `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
+      - Capslock: `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
 
 ### Example routine:
    1) Log into EVE Online with desired characters

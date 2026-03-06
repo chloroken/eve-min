@@ -87,7 +87,7 @@ With minimizing I use less than half of the GPU:
 
 1) Back up your `characters.txt` file
 2) Remove the entire `eve-min` directory
-3) Continue from [step 3](#installation) above
+3) Continue from [step 2](#installation) above
 4) Replace the new `characters.txt`with your backup
 
 # Uninstall

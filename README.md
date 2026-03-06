@@ -25,7 +25,7 @@ On the other hand, minimizing a client will trigger both layers of throttling: "
 
 ### Demonstration (5 clients + max graphics)
 
-Without minimizing I use what feels like the whole GPU *(1 active client, 4 unfocused, 0 minimized)*:
+Without minimizing I use what feels like the whole GPU:
 
 <div align="center">
    
@@ -33,15 +33,19 @@ Without minimizing I use what feels like the whole GPU *(1 active client, 4 unfo
    
 ![](https://i.imgur.com/WLiRVz2.png)
 
+*(1 active client, 4 unfocused, 0 minimized)*
+
 </div>
 
-With minimizing I use less than half of the GPU *(1 active client, 0 unfocused, 4 minimized)*:
+With minimizing I use less than half of the GPU:
 
 <div align="center">
 
 ![](https://i.imgur.com/RL25rqR.png)
    
 ![](https://i.imgur.com/Xo6U6Tr.png)
+
+*(1 active client, 0 unfocused, 4 minimized)*
 
 </div>
 

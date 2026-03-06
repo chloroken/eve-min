@@ -21,22 +21,17 @@ Because speed and responsiveness are important when multiboxing, this script use
 ### Out of Focus vs. Hidden
 Many players believe that if an EVE client's window is out of focus or in another virtual desktop/workspace, that window will be throttled for performance purposes. But if a window is out of focus but **not minimized**, it will only be partially throttled.
 
-<div align="center">
-   
-![](https://i.imgur.com/DNjdWlJ.png)</div>
 On the other hand, minimizing a client will trigger both layers of throttling: "Not focused" and "Window hidden". When fully-throttled, an EVE client will consume virtually zero resources from the GPU. Therefore minimizing inactive windows dramatically boosts peformance while multiboxing.
-
-<div align="center">
-
-![](https://i.imgur.com/RL25rqR.png)</div>
 
 ### Demonstration (5 clients + max graphics)
 
 Without minimizing I use what feels like the whole GPU:
 
 <div align="center">
-
+   
 ![](https://i.imgur.com/WLiRVz2.png)
+   
+![](https://i.imgur.com/DNjdWlJ.png)
 
 *(1 active client, 4 unfocused, 0 minimized)*</div>
 
@@ -45,6 +40,8 @@ With minimizing I use less than half of the GPU:
 <div align="center">
    
 ![](https://i.imgur.com/Xo6U6Tr.png)
+   
+![](https://i.imgur.com/RL25rqR.png)
 
 *(1 active client, 0 unfocused, 4 minimized)*</div>
 

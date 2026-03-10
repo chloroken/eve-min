@@ -125,8 +125,10 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
       - F2: `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to second client
       - F3: `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to third client
       - F4: `bash -c '~/Documents/eve-min/switch.sh "4"'` switches to fourth client
-      - F5: `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
-      - F6: `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
+      - F5: `bash -c '~/Documents/eve-min/switch.sh "5"'` switches to fifth client
+      - F6: `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
+      - F7: `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
+      - F8: `bash -c '~/Documents/eve-min/switch.sh "k"'` kills all clients
    3) Quick cycler:
       - Mouse Forward: `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
       - Mouse Back: `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward

@@ -2,6 +2,7 @@ var windows = workspace.windowList();
 for (var i = 0; i < windows.length; ++i) {
   var w = windows[i];
   if (w.internalId == "$TARGET") {
+    workspace.activeWindow = w
     w.minimized = false;
     w.keepAbove = true;
   } else if ((w.resourceClass == "steam_app_8500") && (w.captionNormal != "EVE Launcher")) {

@@ -2,12 +2,9 @@ var windows = workspace.windowList();
 for (var i = 0; i < windows.length; ++i) {
   var w = windows[i];
   if (w.internalId == "$TARGET") {
-    workspace.activeWindow = w
-    w.minimized = false;
-    w.keepAbove = true;
+    workspace.activeWindow = w;
   } else if ((w.resourceClass == "steam_app_8500") && (w.captionNormal != "EVE Launcher")) {
     // Use "steam_app_default" for Lutris
     w.minimized = true;
-    w.keepAbove = false;
   }
 }

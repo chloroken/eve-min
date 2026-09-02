@@ -11,13 +11,35 @@ cycledata="$data/cycle.txt"
 # Window classes seen across native Wine, Steam, and Lutris launches.
 windowclasses=("exefile.exe" "steam_app_8500" "steam_app_default")
 flags="${1:-}"
+requested_flags="$flags"
+logfile="/tmp/eve-min.log"
+logging_enabled=false
+
+# Logging is opt-in. Accept l as part of the combined flag (lm, lrf, etc.) or
+# as a separate second argument (m l), then remove it from the action flags.
+if [[ "$flags" == *l* || "${2:-}" == l ]]; then
+	logging_enabled=true
+	flags="${flags//l/}"
+fi
+
+log_event() {
+	[[ "$logging_enabled" == true ]] || return 0
+	printf '%(%Y-%m-%dT%H:%M:%S%z)T pid=%s flag=%q %s\n' \
+		-1 "$$" "$requested_flags" "$*" >> "$logfile"
+}
+
+log_event "invoked"
 
 mkdir -p "$data"
 
 # Prevent overlapping shortcut invocations from racing each other.
 lock_dir="${XDG_RUNTIME_DIR:-$data}"
 exec 9>"$lock_dir/eve-min-switch.lock"
-flock -w 2 9 || exit 1
+if ! flock -w 2 9; then
+	log_event "lock timeout"
+	exit 1
+fi
+log_event "lock acquired"
 
 find_eve_windows() {
 	local windowclass class_selector window_id
@@ -117,13 +139,30 @@ refresh_clients() {
 # Actions that do not need a character list.
 case "$flags" in
 	k)
-		pkill "exefile.exe"
+		echo "Killing all exefile.exe windows"
+		process_count=$(pgrep -cx "exefile.exe" 2>/dev/null || true)
+		log_event "kill requested; matched_processes=$process_count"
+		if pkill "exefile.exe"; then
+			log_event "kill signal sent"
+		else
+			log_event "kill failed; status=$?"
+		fi
 		exit
 		;;
 	m)
+		minimized_count=0
+		failed_count=0
 		while IFS= read -r window_id; do
-			[[ -n "$window_id" ]] && kdotool windowminimize "$window_id"
+			[[ -z "$window_id" ]] && continue
+			if kdotool windowminimize "$window_id"; then
+				((minimized_count++))
+			else
+				command_status=$?
+				((failed_count++))
+				log_event "minimize failed; window=$window_id status=$command_status"
+			fi
 		done < <(find_eve_windows)
+		log_event "minimize complete; minimized=$minimized_count failed=$failed_count"
 		exit
 		;;
 esac
@@ -135,6 +174,7 @@ if [[ "$flags" == r* ]]; then
 fi
 
 refresh_clients
+log_event "refresh complete; clients=$clientcount"
 
 if [[ -z "$flags" ]]; then
 	exit
@@ -187,6 +227,7 @@ esac
 
 target="${clients[target_index]}"
 printf '%s\n' "$target_index" > "$cycledata"
+log_event "switching; active=${active_window:-none} target=$target index=$target_index"
 
 # Minimize the other live clients, then explicitly restore and activate the
 # target. Removing MINIMIZED is important: activation alone is not reliable.
@@ -198,4 +239,8 @@ for window_id in "${clients[@]}"; do
 done
 
 kdotool windowstate --remove minimized --add above "$target"
-kdotool windowactivate "$target"
+if kdotool windowactivate "$target"; then
+	log_event "switch complete; target=$target"
+else
+	log_event "switch failed; target=$target status=$?"
+fi

@@ -66,6 +66,8 @@ With minimizing I use less than half of the GPU:
       - This uses the priority order from `characters.txt`, followed by unlisted characters alphabetically
    - `"m"` minimizes all clients
    - `"k"` kills all clients
+   - `"l"` enables logging to `/tmp/eve-min.log` for that invocation
+      - Combine it with an action (`"lm"`, `"lk"`, `"lf"`) or pass it second (`"m" "l"`)
 
 **Combination Flags**: The `"r"` flag can still be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` for compatibility. Switching now refreshes live clients automatically, so the prefix is optional.
 

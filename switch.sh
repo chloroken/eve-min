@@ -15,7 +15,7 @@ windowclass="steam_app_8500" # use steam_app_default for lutris
 if [[ "$flags" == r* ]]; then
 
 	# Clean up existing client files
-	rm "$clientdata"
+	if [ -f "$clientdata" ] ; then rm "$clientdata" ; fi
 
 	# Store client IDs of active characters
 	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
@@ -97,7 +97,6 @@ if [[ "$flags" == f || "$flags" == b ]]; then
 	
 # Specific index target selection ("1") ("2")..
 else
-
 	# Prevent out-of-bounds selection
 	if [ "$flags" -gt "$clientcount" ]; then
 		exit

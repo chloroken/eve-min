@@ -56,25 +56,25 @@ With minimizing I use less than half of the GPU:
    - `"r"` refreshes active clients
       - This command creates a list of currently-logged-in clients
       - The list is then used by other commands
-   - `"f"` and `"b"` cycle forward and backward through clients
+   - `"f"` and `"b"` cycle forward and backward through live clients
+      - The currently focused client determines the next/previous client
+      - The live client list is refreshed automatically on every switch
    - `"1"`, `"3"`, and `"12"` target specific clients
       - This command will look for the Nth active character
       - This uses the order listed `characters.txt`
    - `"m"` minimizes all clients
    - `"k"` kills all clients
 
-**Combination Flags**: The `"r"` flag can be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` to perform both actions at once, avoiding the need for a dedicated refresh button. However, be aware that **refreshing slows down switches**. Unless performance doesn't matter to you, use combination flags sparingly.
+**Combination Flags**: The `"r"` flag can still be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` for compatibility. Switching now refreshes live clients automatically, so the prefix is optional.
 
 # Dependencies
 
 - [KDE Plasma](https://kde.org/plasma-desktop/) for KWin scripting *(technically just the [compositor](https://github.com/KDE/kwin) is needed)*
-- The [qt5-tools](https://archlinux.org/packages/extra/x86_64/qt5-tools/) package for `qdbus` *(comes with KDE Plasma)*
-   - Install: `sudo pacman -S qt5-tools`
 - The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(easy installation instructions below)*
    - Install (one-line): `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.3/kdotool-0.2.3-x86_64-unknown-linux-gnu.tar.gz | sudo tar xzf - -C /usr/local/bin/`
 
 # Installation
-1) Install dependencies from above (qt5tools, kdotool)
+1) Install the `kdotool` dependency from above
 2) Download the **EVE-min** repository to `~/Documents` with these commands:
    - `mkdir ~/Documents/eve-min`
    - `git clone https://github.com/chloroken/eve-min ~/Documents/eve-min`
@@ -119,7 +119,7 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 ### Example shortcut ideas:
    1) One-button wonder:
       - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
-      - NOTE: Combining "r" with another flag **makes switching slower**. Other setups are more ideal.
+      - NOTE: The `"r"` prefix is optional because switches now refresh automatically.
    2) Targeted switching (my setup):
       - F1: `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to first client
       - F2: `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to second client
@@ -136,9 +136,8 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 
 ### Example routine:
    1) Log into EVE Online with desired characters
-   2) Use any shortcut containing the `"r"` flag
-        - This "locks in" active characters based on the order supplied in `characters.txt`
-        - This is particularly useful when changing characters - keybinds will persist until a refresh
+    2) Use any switching shortcut
+        - Active characters are detected automatically while preserving the order supplied in `characters.txt`
    3) Use chosen shortcuts to switch between clients
 
 # To Do

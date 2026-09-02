@@ -59,9 +59,11 @@ With minimizing I use less than half of the GPU:
    - `"f"` and `"b"` cycle forward and backward through live clients
       - The currently focused client determines the next/previous client
       - The live client list is refreshed automatically on every switch
+      - Characters in `characters.txt` come first in the listed order
+      - Unlisted characters follow alphabetically; if the file is absent, all characters are alphabetical
    - `"1"`, `"3"`, and `"12"` target specific clients
       - This command will look for the Nth active character
-      - This uses the order listed `characters.txt`
+      - This uses the priority order from `characters.txt`, followed by unlisted characters alphabetically
    - `"m"` minimizes all clients
    - `"k"` kills all clients
 
@@ -80,15 +82,15 @@ With minimizing I use less than half of the GPU:
    - `git clone https://github.com/chloroken/eve-min ~/Documents/eve-min`
 3) Grant executable permission to the script with this command:
    - `sudo chmod a+x ~/Documents/eve-min/switch.sh`
-4) Use a text editor to open `~/Documents/eve-min/characters.txt` to add characters
+4) Optionally create `~/Documents/eve-min/characters.txt` to put selected characters first, one per line
 5) If using Lutris instead of Steam, edit line 12 of `switch.sh` as commented
 6) Proceed to the **Usage Guide** section below
 # Updating
 
-1) Back up your `characters.txt` file
+1) Back up your optional `characters.txt` file, if present
 2) Remove the entire `eve-min` directory
 3) Continue from [step 2](#installation) above
-4) Replace the new `characters.txt`with your backup
+4) Restore your `characters.txt` backup, if applicable
 
 # Uninstall
 
@@ -137,7 +139,7 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 ### Example routine:
    1) Log into EVE Online with desired characters
     2) Use any switching shortcut
-        - Active characters are detected automatically while preserving the order supplied in `characters.txt`
+        - Listed characters use the order supplied in `characters.txt`; other active characters follow alphabetically
    3) Use chosen shortcuts to switch between clients
 
 # To Do

@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# EVE client switcher for KDE. Character order comes from characters.txt, but
-# the set of clients is rebuilt from live windows for every switch.
+# EVE client switcher for KDE. characters.txt is an optional priority list;
+# every other live character is appended in alphabetical order.
 
 dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
 clientlist="$dir/characters.txt"
 data="$dir/data"
 clientdata="$data/clients.txt"
 cycledata="$data/cycle.txt"
-windowclass="steam_app_8500" # use steam_app_default for Lutris
+# Window classes seen across native Wine, Steam, and Lutris launches.
+windowclasses=("exefile.exe" "steam_app_8500" "steam_app_default")
 flags="${1:-}"
 
 mkdir -p "$data"
@@ -18,50 +19,91 @@ lock_dir="${XDG_RUNTIME_DIR:-$data}"
 exec 9>"$lock_dir/eve-min-switch.lock"
 flock -w 2 9 || exit 1
 
+find_eve_windows() {
+	local windowclass class_selector window_id
+	local -A seen=()
+
+	for windowclass in "${windowclasses[@]}"; do
+		# Wine/Steam versions have exposed the identifying value through both
+		# KWin's class and classname fields, so query both and deduplicate.
+		for class_selector in --class --classname; do
+			while IFS= read -r window_id; do
+				if [[ -n "$window_id" && -z "${seen[$window_id]:-}" ]]; then
+					printf '%s\n' "$window_id"
+					seen["$window_id"]=1
+				fi
+			done < <(kdotool search "$class_selector" "$windowclass" 2>/dev/null)
+		done
+	done
+}
+
 refresh_clients() {
-	local character window_id match contains_count i
-	local -a eve_windows=() window_titles=() refreshed=()
+	local character window_id title character_name match contains_count i
+	local -a found_windows=() window_titles=() character_names=() refreshed=()
 	local -A already_added=()
 
-	mapfile -t eve_windows < <(kdotool search --classname "$windowclass" 2>/dev/null)
+	# Build one live window list and discard the launcher. KWin may expose EVE
+	# character titles either as "Name" or "EVE - Name", so keep both the raw
+	# title and a normalized character name.
+	while IFS= read -r window_id; do
+		[[ -z "$window_id" ]] && continue
+		title=$(kdotool getwindowname "$window_id" 2>/dev/null)
+		[[ -z "$title" || "$title" == "EVE Launcher" ]] && continue
 
-	# Read every title once. This avoids repeated broad regular-expression
-	# searches and lets us prefer exact character-name matches.
-	for window_id in "${eve_windows[@]}"; do
-		window_titles+=("$(kdotool getwindowname "$window_id" 2>/dev/null)")
-	done
+		character_name="${title#EVE - }"
+		found_windows+=("$window_id")
+		window_titles+=("$title")
+		character_names+=("$character_name")
+	done < <(find_eve_windows)
 
-	while IFS= read -r character || [[ -n "$character" ]]; do
-		character="${character%$'\r'}"
-		[[ -z "$character" ]] && continue
-		match=""
+	# Listed, logged-in characters retain their characters.txt order.
+	if [[ -f "$clientlist" ]]; then
+		while IFS= read -r character || [[ -n "$character" ]]; do
+			character="${character%$'\r'}"
+			[[ -z "$character" ]] && continue
+			match=""
 
-		# EVE normally uses the character name as the complete window title.
-		for ((i = 0; i < ${#eve_windows[@]}; i++)); do
-			if [[ "${window_titles[i]}" == "$character" ]]; then
-				match="${eve_windows[i]}"
-				break
-			fi
-		done
-
-		# Retain compatibility if EVE adds text around the character name, but
-		# accept a partial match only when it identifies exactly one window.
-		if [[ -z "$match" ]]; then
-			contains_count=0
-			for ((i = 0; i < ${#eve_windows[@]}; i++)); do
-				if [[ "${window_titles[i]}" == *"$character"* ]]; then
-					match="${eve_windows[i]}"
-					((contains_count++))
+			for ((i = 0; i < ${#found_windows[@]}; i++)); do
+				if [[ "${character_names[i]}" == "$character" ]]; then
+					match="${found_windows[i]}"
+					break
 				fi
 			done
-			[[ "$contains_count" -eq 1 ]] || match=""
-		fi
 
-		if [[ -n "$match" && -z "${already_added[$match]:-}" ]]; then
-			refreshed+=("$match")
-			already_added["$match"]=1
-		fi
-	done < "$clientlist"
+			# Allow a unique partial match for compatibility with other title
+			# formats, without allowing one entry to select unpredictably.
+			if [[ -z "$match" ]]; then
+				contains_count=0
+				for ((i = 0; i < ${#found_windows[@]}; i++)); do
+					if [[ "${window_titles[i]}" == *"$character"* ]]; then
+						match="${found_windows[i]}"
+						((contains_count++))
+					fi
+				done
+				[[ "$contains_count" -eq 1 ]] || match=""
+			fi
+
+			if [[ -n "$match" && -z "${already_added[$match]:-}" ]]; then
+				refreshed+=("$match")
+				already_added["$match"]=1
+			fi
+		done < "$clientlist"
+	fi
+
+	# Append every unlisted live character alphabetically. This is also the
+	# complete list when characters.txt is absent.
+	while IFS=$'\t' read -r character_name window_id; do
+		[[ -z "$window_id" ]] && continue
+		refreshed+=("$window_id")
+		already_added["$window_id"]=1
+	done < <(
+		for ((i = 0; i < ${#found_windows[@]}; i++)); do
+			window_id="${found_windows[i]}"
+			if [[ -z "${already_added[$window_id]:-}" ]]; then
+				printf '%s\t%s\n' "${character_names[i]}" "$window_id"
+			fi
+		done | LC_ALL=C sort -f -t $'\t' -k1,1 -k2,2
+	)
 
 	clients=("${refreshed[@]}")
 	clientcount="${#clients[@]}"
@@ -81,7 +123,7 @@ case "$flags" in
 	m)
 		while IFS= read -r window_id; do
 			[[ -n "$window_id" ]] && kdotool windowminimize "$window_id"
-		done < <(kdotool search --classname "$windowclass" 2>/dev/null)
+		done < <(find_eve_windows)
 		exit
 		;;
 esac

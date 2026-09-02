@@ -71,7 +71,7 @@ With minimizing I use less than half of the GPU:
 - The [qt5-tools](https://archlinux.org/packages/extra/x86_64/qt5-tools/) package for `qdbus` *(comes with KDE Plasma)*
    - Install: `sudo pacman -S qt5-tools`
 - The [kdotool](https://github.com/jinliu/kdotool) package for window IDing *(easy installation instructions below)*
-   - Install (one-line): `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.2-pre/kdotool.tar.gz | sudo tar xf - -C /usr/local/bin/`
+   - Install (one-line): `curl -s -L https://github.com/jinliu/kdotool/releases/download/v0.2.3/kdotool-0.2.3-x86_64-unknown-linux-gnu.tar.gz | sudo tar xzf - -C /usr/local/bin/`
 
 # Installation
 1) Install dependencies from above (qt5tools, kdotool)

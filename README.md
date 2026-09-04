@@ -53,12 +53,8 @@ With minimizing I use less than half of the GPU:
 
 **EVE-min** is a script that you can run as a command to manipulate your EVE clients. The script does nothing on its own and must be provided flags to indicate which behavior or combination of behaviors you'd like to enact. The flags are as follows:
 
-   - `"r"` refreshes active clients
-      - This command creates a list of currently-logged-in clients
-      - The list is then used by other commands
    - `"f"` and `"b"` cycle forward and backward through live clients
       - The currently focused client determines the next/previous client
-      - The live client list is refreshed automatically on every switch
       - Characters in `characters.txt` come first in the listed order
       - Unlisted characters follow alphabetically; if the file is absent, all characters are alphabetical
    - `"1"`, `"3"`, and `"12"` target specific clients
@@ -68,8 +64,6 @@ With minimizing I use less than half of the GPU:
    - `"k"` kills all clients
    - `"l"` enables logging to `/tmp/eve-min.log` for that invocation
       - Combine it with an action (`"lm"`, `"lk"`, `"lf"`) or pass it second (`"m" "l"`)
-
-**Combination Flags**: The `"r"` flag can still be prepended to target flags like `"rf"`, `"rb"`, `"r1"`, and `"r5"` for compatibility. Switching now refreshes live clients automatically, so the prefix is optional.
 
 # Dependencies
 
@@ -85,8 +79,7 @@ With minimizing I use less than half of the GPU:
 3) Grant executable permission to the script with this command:
    - `sudo chmod a+x ~/Documents/eve-min/switch.sh`
 4) Optionally create `~/Documents/eve-min/characters.txt` to put selected characters first, one per line
-5) If using Lutris instead of Steam, edit line 12 of `switch.sh` as commented
-6) Proceed to the **Usage Guide** section below
+5) Proceed to the **Usage Guide** section below
 # Updating
 
 1) Back up your optional `characters.txt` file, if present
@@ -121,26 +114,23 @@ In KDE Plasma's `System Settings` → `Keyboard` → `Shortcuts`, bind the scrip
 </div>
 
 ### Example shortcut ideas:
-   1) One-button wonder:
-      - `bash -c '~/Documents/eve-min/switch.sh "rf"'` refreshes active characters & cycles forward
-      - NOTE: The `"r"` prefix is optional because switches now refresh automatically.
+   1) One-button cycling:
+      - `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
    2) Targeted switching (my setup):
       - F1: `bash -c '~/Documents/eve-min/switch.sh "1"'` switches to first client
       - F2: `bash -c '~/Documents/eve-min/switch.sh "2"'` switches to second client
       - F3: `bash -c '~/Documents/eve-min/switch.sh "3"'` switches to third client
       - F4: `bash -c '~/Documents/eve-min/switch.sh "4"'` switches to fourth client
       - F5: `bash -c '~/Documents/eve-min/switch.sh "5"'` switches to fifth client
-      - F6: `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
-      - F7: `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
-      - F8: `bash -c '~/Documents/eve-min/switch.sh "k"'` kills all clients
+      - F6: `bash -c '~/Documents/eve-min/switch.sh "m"'` minimizes all clients
+      - F7: `bash -c '~/Documents/eve-min/switch.sh "k"'` kills all clients
    3) Quick cycler:
       - Mouse Forward: `bash -c '~/Documents/eve-min/switch.sh "f"'` cycles forward
       - Mouse Back: `bash -c '~/Documents/eve-min/switch.sh "b"'` cycles backward
-      - Capslock: `bash -c '~/Documents/eve-min/switch.sh "r"'` refreshes active clients
 
 ### Example routine:
    1) Log into EVE Online with desired characters
-    2) Use any switching shortcut
+   2) Use any switching shortcut
         - Listed characters use the order supplied in `characters.txt`; other active characters follow alphabetically
    3) Use chosen shortcuts to switch between clients
 

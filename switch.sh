@@ -1,120 +1,246 @@
 #!/bin/bash
 
-# Set up directory variables
-dir=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+# EVE client switcher for KDE. characters.txt is an optional priority list;
+# every other live character is appended in alphabetical order.
+
+dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
 clientlist="$dir/characters.txt"
 data="$dir/data"
 clientdata="$data/clients.txt"
 cycledata="$data/cycle.txt"
+# Window classes seen across native Wine, Steam, and Lutris launches.
+windowclasses=("exefile.exe" "steam_app_8500" "steam_app_default")
+flags="${1:-}"
+requested_flags="$flags"
+logfile="/tmp/eve-min.log"
+logging_enabled=false
 
-# Initialize magic variables
-flags="$1" # makes code more readable
-windowclass="steam_app_8500" # use steam_app_default for lutris
+# Logging is opt-in. Accept l as part of the combined flag (lm, lrf, etc.) or
+# as a separate second argument (m l), then remove it from the action flags.
+if [[ "$flags" == *l* || "${2:-}" == l ]]; then
+	logging_enabled=true
+	flags="${flags//l/}"
+fi
 
-# Refresh active client list ("r")
-if [[ "$flags" == r* ]]; then
+log_event() {
+	[[ "$logging_enabled" == true ]] || return 0
+	printf '%(%Y-%m-%dT%H:%M:%S%z)T pid=%s flag=%q %s\n' \
+		-1 "$$" "$requested_flags" "$*" >> "$logfile"
+}
 
-	# Clean up existing client files
-	rm "$clientdata"
+log_event "invoked"
 
-	# Store client IDs of active characters
-	cat "$clientlist" | while read -r line || [ -n "$line" ]; do
+mkdir -p "$data"
 
-		# Use kdotool to check if a specific client is active
-		if [[ "$(kdotool search --name "$line")" ]]; then
-		
-			# Save client's "kwin identifier" to clientdata
-			echo $(kdotool search --name "$line") >> "$clientdata"
-		fi
+# Prevent overlapping shortcut invocations from racing each other.
+lock_dir="${XDG_RUNTIME_DIR:-$data}"
+exec 9>"$lock_dir/eve-min-switch.lock"
+if ! flock -w 2 9; then
+	log_event "lock timeout"
+	exit 1
+fi
+log_event "lock acquired"
+
+find_eve_windows() {
+	local windowclass class_selector window_id
+	local -A seen=()
+
+	for windowclass in "${windowclasses[@]}"; do
+		# Wine/Steam versions have exposed the identifying value through both
+		# KWin's class and classname fields, so query both and deduplicate.
+		for class_selector in --class --classname; do
+			while IFS= read -r window_id; do
+				if [[ -n "$window_id" && -z "${seen[$window_id]:-}" ]]; then
+					printf '%s\n' "$window_id"
+					seen["$window_id"]=1
+				fi
+			done < <(kdotool search "$class_selector" "$windowclass" 2>/dev/null)
+		done
 	done
+}
 
-	# If this was just a refresh (e.g., "r", not "rf"), stop now
-	if [ "$flags" == r ]; then
-		exit
+refresh_clients() {
+	local character window_id title character_name match contains_count i
+	local -a found_windows=() window_titles=() character_names=() refreshed=()
+	local -A already_added=()
 
-	# Trim "r" from two-digit flags (e.g., "r1" -> "1", etc.)
-	else
-		flags=$(echo "$1" | cut -c 2-)
+	# Build one live window list and discard the launcher. KWin may expose EVE
+	# character titles either as "Name" or "EVE - Name", so keep both the raw
+	# title and a normalized character name.
+	while IFS= read -r window_id; do
+		[[ -z "$window_id" ]] && continue
+		title=$(kdotool getwindowname "$window_id" 2>/dev/null)
+		[[ -z "$title" || "$title" == "EVE Launcher" ]] && continue
+
+		character_name="${title#EVE - }"
+		found_windows+=("$window_id")
+		window_titles+=("$title")
+		character_names+=("$character_name")
+	done < <(find_eve_windows)
+
+	# Listed, logged-in characters retain their characters.txt order.
+	if [[ -f "$clientlist" ]]; then
+		while IFS= read -r character || [[ -n "$character" ]]; do
+			character="${character%$'\r'}"
+			[[ -z "$character" ]] && continue
+			match=""
+
+			for ((i = 0; i < ${#found_windows[@]}; i++)); do
+				if [[ "${character_names[i]}" == "$character" ]]; then
+					match="${found_windows[i]}"
+					break
+				fi
+			done
+
+			# Allow a unique partial match for compatibility with other title
+			# formats, without allowing one entry to select unpredictably.
+			if [[ -z "$match" ]]; then
+				contains_count=0
+				for ((i = 0; i < ${#found_windows[@]}; i++)); do
+					if [[ "${window_titles[i]}" == *"$character"* ]]; then
+						match="${found_windows[i]}"
+						((contains_count++))
+					fi
+				done
+				[[ "$contains_count" -eq 1 ]] || match=""
+			fi
+
+			if [[ -n "$match" && -z "${already_added[$match]:-}" ]]; then
+				refreshed+=("$match")
+				already_added["$match"]=1
+			fi
+		done < "$clientlist"
 	fi
-fi
 
-# Kill all clients ("k")
-if [ "$flags" == k ]; then
-	pkill "exefile.exe"
-	exit
+	# Append every unlisted live character alphabetically. This is also the
+	# complete list when characters.txt is absent.
+	while IFS=$'\t' read -r character_name window_id; do
+		[[ -z "$window_id" ]] && continue
+		refreshed+=("$window_id")
+		already_added["$window_id"]=1
+	done < <(
+		for ((i = 0; i < ${#found_windows[@]}; i++)); do
+			window_id="${found_windows[i]}"
+			if [[ -z "${already_added[$window_id]:-}" ]]; then
+				printf '%s\t%s\n' "${character_names[i]}" "$window_id"
+			fi
+		done | LC_ALL=C sort -f -t $'\t' -k1,1 -k2,2
+	)
 
-# Minimize all clients ("m")
-elif [ "$flags" == m ]; then
-
-	# Use kdotool to find EVE clients
-	for client in $(kdotool search --classname "$windowclass")
-	do
-		kdotool windowminimize "$client"
-	done
-	exit
-fi
-
-# Ensure client file exists before continuing
-if [ ! -f "$clientdata" ]; then
-    exit
-
-# Map client data to a temporary array
-else
-	mapfile -t clients < "$clientdata"
+	clients=("${refreshed[@]}")
 	clientcount="${#clients[@]}"
-fi
-
-# Forward/backward cycling ("f") ("b")
-if [[ "$flags" == f || "$flags" == b ]]; then
-
-	# Read current cycle from disk
-	currentcycle=$(cat "$cycledata")
-	
-	# Increment cycle forward
-	if [ "$flags" == f ]; then
-		((currentcycle++))
-		
-		# Wrap cycle to start
-		if [ "$currentcycle" -ge "$clientcount" ]; then
-			((currentcycle=0));
-		fi
-
-	# Decrement cycle backward
-	elif [ "$flags" == b ]; then
-		((currentcycle--))
-		
-		# Wrap cycle to end
-		if [ "$currentcycle" -lt 0 ]; then
-			((currentcycle="$clientcount"-1));
-		fi
+	if ((clientcount > 0)); then
+		printf '%s\n' "${clients[@]}" > "$clientdata"
+	else
+		: > "$clientdata"
 	fi
-	
-	# Save new cycle to disk
-	echo "$currentcycle" > "$cycledata"
+}
 
-	# Set target to current cycle
-	target="${clients["$currentcycle"]}"
-	
-# Specific index target selection ("1") ("2")..
-else
-
-	# Prevent out-of-bounds selection
-	if [ "$flags" -gt "$clientcount" ]; then
+# Actions that do not need a character list.
+case "$flags" in
+	k)
+		echo "Killing all exefile.exe windows"
+		process_count=$(pgrep -cx "exefile.exe" 2>/dev/null || true)
+		log_event "kill requested; matched_processes=$process_count"
+		if pkill "exefile.exe"; then
+			log_event "kill signal sent"
+		else
+			log_event "kill failed; status=$?"
+		fi
 		exit
-	fi
+		;;
+	m)
+		minimized_count=0
+		failed_count=0
+		while IFS= read -r window_id; do
+			[[ -z "$window_id" ]] && continue
+			if kdotool windowminimize "$window_id"; then
+				((minimized_count++))
+			else
+				command_status=$?
+				((failed_count++))
+				log_event "minimize failed; window=$window_id status=$command_status"
+			fi
+		done < <(find_eve_windows)
+		log_event "minimize complete; minimized=$minimized_count failed=$failed_count"
+		exit
+		;;
+esac
 
-	# Set target to specified position
-	target="${clients["$flags-1"]}"
+# A leading r is retained for compatibility. Switching is now always refreshed,
+# so rf/rb/r1 behave just like f/b/1; r by itself only refreshes the cache.
+if [[ "$flags" == r* ]]; then
+	flags="${flags#r}"
 fi
 
-# Create a temporary kwin script & load it into qdbus
-script=$(mktemp)
-sed "s/\$TARGET/$target/" $(dirname $0)/switch.js > $script
-script_id=$(qdbus org.kde.KWin /Scripting loadScript $script)
+refresh_clients
+log_event "refresh complete; clients=$clientcount"
 
-# Run script
-qdbus org.kde.KWin /Scripting/Script$script_id run
-qdbus org.kde.KWin /Scripting/Script$script_id stop
+if [[ -z "$flags" ]]; then
+	exit
+fi
 
-# Clean up temp script
-rm $script
+if ((clientcount == 0)); then
+	exit 1
+fi
+
+case "$flags" in
+	f|b)
+		active_window=$(kdotool getactivewindow 2>/dev/null || true)
+		active_index=-1
+
+		for ((i = 0; i < clientcount; i++)); do
+			if [[ "${clients[i]}" == "$active_window" ]]; then
+				active_index=$i
+				break
+			fi
+		done
+
+		if [[ "$flags" == f ]]; then
+			# If focus is outside EVE, forward cycling starts at the first client.
+			if ((active_index < 0)); then
+				target_index=0
+			else
+				target_index=$(((active_index + 1) % clientcount))
+			fi
+		else
+			# If focus is outside EVE, backward cycling starts at the last client.
+			if ((active_index < 0)); then
+				target_index=$((clientcount - 1))
+			else
+				target_index=$(((active_index - 1 + clientcount) % clientcount))
+			fi
+		fi
+		;;
+	*[!0-9]*|'')
+		exit 1
+		;;
+	*)
+		# Numbered targets are one-based (1 selects the first live character).
+		requested_index=$((10#$flags))
+		if ((requested_index < 1 || requested_index > clientcount)); then
+			exit 1
+		fi
+		target_index=$((requested_index - 1))
+		;;
+esac
+
+target="${clients[target_index]}"
+printf '%s\n' "$target_index" > "$cycledata"
+log_event "switching; active=${active_window:-none} target=$target index=$target_index"
+
+# Minimize the other live clients, then explicitly restore and activate the
+# target. Removing MINIMIZED is important: activation alone is not reliable.
+for window_id in "${clients[@]}"; do
+	if [[ "$window_id" != "$target" ]]; then
+		kdotool windowstate --remove above "$window_id"
+		kdotool windowminimize "$window_id"
+	fi
+done
+
+kdotool windowstate --remove minimized --add above "$target"
+if kdotool windowactivate "$target"; then
+	log_event "switch complete; target=$target"
+else
+	log_event "switch failed; target=$target status=$?"
+fi
